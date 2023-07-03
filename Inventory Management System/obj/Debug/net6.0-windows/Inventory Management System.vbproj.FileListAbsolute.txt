@@ -17,3 +17,4 @@ C:\Users\rohan\Documents\Inventory Management System\Inventory Management System
 C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\ref\Inventory Management System.dll
 C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory_Management_System.Dashboard.resources
 C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory_Management_System.Resources.resources
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory_Management_System.DashboardForm.resources

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="LoginUserIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="UserIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAADVJJREFUeF7tnWlUFFcWx5195sOcOWdWY5L5MMvJJJlMYjRqwDXGgCIo2MqiqMgi
@@ -230,10 +230,10 @@
         ia0QRVEURVEURVEURVFUu4WF/wF+/H4ICj4vagAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="LoginLogo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Logo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAyAAAACCCAYAAAC+TKwQAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAALkRJREFUeF7tnfm/XUWVvvvfUFFQcQBFgY4o2g6ANji03WqL2g44j9jtPKLSDl9x
+        vAAADrwBlbxySQAALkRJREFUeF7tnfm/XUWVvvvfUFFQcQBFgY4o2g6ANji03WqL2g44j9jtPKLSDl9x
         FhUaBRQnRFBUFAUZAoFAEiAQSEiYIUgYEkDUtn/c3/vsS4W667619z7jvfve94fnA7lnVZ19ztm7ar21
         Vq36hz//7f8qY4wxxhhjjJkGFiDGGGOMMcaYqWEBYowxxhhjjJkaFiDGGGOMMcaYqWEBYowxxhhjjJka
         FiDGGGOMMcaYqWEBYowxxhhjjJkaFiDGGGOMMcaYqWEBYowxxhhjjJkaFiDGGGOMMcaYqWEBYowxxhhj

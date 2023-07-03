@@ -23,7 +23,7 @@ Partial Class LoginForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(LoginForm))
-        LoginUserIcon = New PictureBox()
+        UserIcon = New PictureBox()
         Panel1 = New Panel()
         PhoneNumberInput = New TextBox()
         PictureBox2 = New PictureBox()
@@ -32,25 +32,25 @@ Partial Class LoginForm
         PasswordInput = New TextBox()
         PictureBox3 = New PictureBox()
         LoginButton = New Button()
-        CancelButton = New Button()
-        LoginLogo = New PictureBox()
-        CType(LoginUserIcon, ComponentModel.ISupportInitialize).BeginInit()
+        CancelLoginButton = New Button()
+        Logo = New PictureBox()
+        CType(UserIcon, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
-        CType(LoginLogo, ComponentModel.ISupportInitialize).BeginInit()
+        CType(Logo, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
-        ' LoginUserIcon
+        ' UserIcon
         ' 
-        LoginUserIcon.Image = CType(resources.GetObject("LoginUserIcon.Image"), Image)
-        LoginUserIcon.Location = New Point(171, 59)
-        LoginUserIcon.Name = "LoginUserIcon"
-        LoginUserIcon.Size = New Size(156, 156)
-        LoginUserIcon.SizeMode = PictureBoxSizeMode.StretchImage
-        LoginUserIcon.TabIndex = 5
-        LoginUserIcon.TabStop = False
+        UserIcon.Image = CType(resources.GetObject("UserIcon.Image"), Image)
+        UserIcon.Location = New Point(171, 59)
+        UserIcon.Name = "UserIcon"
+        UserIcon.Size = New Size(156, 156)
+        UserIcon.SizeMode = PictureBoxSizeMode.StretchImage
+        UserIcon.TabIndex = 5
+        UserIcon.TabStop = False
         ' 
         ' Panel1
         ' 
@@ -140,26 +140,26 @@ Partial Class LoginForm
         LoginButton.Text = "Login"
         LoginButton.UseVisualStyleBackColor = False
         ' 
-        ' CancelButton
+        ' CancelLoginButton
         ' 
-        CancelButton.Cursor = Cursors.Hand
-        CancelButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        CancelButton.Location = New Point(85, 448)
-        CancelButton.Name = "CancelButton"
-        CancelButton.Size = New Size(323, 45)
-        CancelButton.TabIndex = 12
-        CancelButton.Text = "Cancel"
-        CancelButton.UseVisualStyleBackColor = True
+        CancelLoginButton.Cursor = Cursors.Hand
+        CancelLoginButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        CancelLoginButton.Location = New Point(85, 448)
+        CancelLoginButton.Name = "CancelLoginButton"
+        CancelLoginButton.Size = New Size(323, 45)
+        CancelLoginButton.TabIndex = 12
+        CancelLoginButton.Text = "Cancel"
+        CancelLoginButton.UseVisualStyleBackColor = True
         ' 
-        ' LoginLogo
+        ' Logo
         ' 
-        LoginLogo.Image = CType(resources.GetObject("LoginLogo.Image"), Image)
-        LoginLogo.Location = New Point(85, 221)
-        LoginLogo.Name = "LoginLogo"
-        LoginLogo.Size = New Size(323, 50)
-        LoginLogo.SizeMode = PictureBoxSizeMode.StretchImage
-        LoginLogo.TabIndex = 13
-        LoginLogo.TabStop = False
+        Logo.Image = CType(resources.GetObject("Logo.Image"), Image)
+        Logo.Location = New Point(92, 221)
+        Logo.Name = "Logo"
+        Logo.Size = New Size(310, 50)
+        Logo.SizeMode = PictureBoxSizeMode.StretchImage
+        Logo.TabIndex = 13
+        Logo.TabStop = False
         ' 
         ' LoginForm
         ' 
@@ -167,28 +167,28 @@ Partial Class LoginForm
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
         ClientSize = New Size(491, 656)
-        Controls.Add(LoginLogo)
-        Controls.Add(CancelButton)
+        Controls.Add(Logo)
+        Controls.Add(CancelLoginButton)
         Controls.Add(LoginButton)
         Controls.Add(Panel2)
         Controls.Add(Panel1)
-        Controls.Add(LoginUserIcon)
+        Controls.Add(UserIcon)
         FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         Name = "LoginForm"
-        StartPosition = FormStartPosition.Manual
+        StartPosition = FormStartPosition.CenterScreen
         Text = "LoginForm"
-        CType(LoginUserIcon, ComponentModel.ISupportInitialize).EndInit()
+        CType(UserIcon, ComponentModel.ISupportInitialize).EndInit()
         Panel1.ResumeLayout(False)
         Panel1.PerformLayout()
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
-        CType(LoginLogo, ComponentModel.ISupportInitialize).EndInit()
+        CType(Logo, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
-    Friend WithEvents LoginUserIcon As PictureBox
+    Friend WithEvents UserIcon As PictureBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents PictureBox2 As PictureBox
     Friend WithEvents Panel2 As Panel
@@ -196,7 +196,7 @@ Partial Class LoginForm
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents PhoneNumberInput As TextBox
     Friend WithEvents LoginButton As Button
-    Friend WithEvents CancelButton As Button
+    Friend WithEvents CancelLoginButton As Button
     Friend WithEvents ShowPasswordCheckbox As CheckBox
-    Friend WithEvents LoginLogo As PictureBox
+    Friend WithEvents Logo As PictureBox
 End Class

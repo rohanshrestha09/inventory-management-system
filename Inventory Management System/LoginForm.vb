@@ -28,7 +28,7 @@
         PasswordInput.PasswordChar = If(ShowPasswordCheckbox.Checked, ControlChars.NullChar, "•")
     End Sub
 
-    Private Sub CancelButton_Click(sender As Object, e As EventArgs) Handles CancelButton.Click
+    Private Sub CancelLoginButton_Click(sender As Object, e As EventArgs) Handles CancelLoginButton.Click
         Close()
     End Sub
 End Class

@@ -25,7 +25,7 @@ Partial Class Dashboard
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Dashboard))
         Panel1 = New Panel()
         DashboardContainer = New Panel()
-        DashboardMenuPanel = New Panel()
+        Menu = New Panel()
         AccountPanel = New Panel()
         AccountButton = New Button()
         PictureBox4 = New PictureBox()
@@ -38,10 +38,10 @@ Partial Class Dashboard
         DashboardPanel = New Panel()
         DashboardButton = New Button()
         PictureBox1 = New PictureBox()
-        DashboardIconPanel = New Panel()
-        DashboardIcon = New PictureBox()
+        Header = New Panel()
+        Logo = New PictureBox()
         Panel1.SuspendLayout()
-        DashboardMenuPanel.SuspendLayout()
+        Menu.SuspendLayout()
         AccountPanel.SuspendLayout()
         CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         OrderPanel.SuspendLayout()
@@ -50,16 +50,16 @@ Partial Class Dashboard
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         DashboardPanel.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
-        DashboardIconPanel.SuspendLayout()
-        CType(DashboardIcon, ComponentModel.ISupportInitialize).BeginInit()
+        Header.SuspendLayout()
+        CType(Logo, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Panel1
         ' 
         Panel1.BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
         Panel1.Controls.Add(DashboardContainer)
-        Panel1.Controls.Add(DashboardMenuPanel)
-        Panel1.Controls.Add(DashboardIconPanel)
+        Panel1.Controls.Add(Menu)
+        Panel1.Controls.Add(Header)
         Panel1.Dock = DockStyle.Fill
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
@@ -68,28 +68,27 @@ Partial Class Dashboard
         ' 
         ' DashboardContainer
         ' 
-        DashboardContainer.BorderStyle = BorderStyle.FixedSingle
-        DashboardContainer.Dock = DockStyle.Fill
+        DashboardContainer.BackColor = Color.White
+        DashboardContainer.Dock = DockStyle.Right
         DashboardContainer.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        DashboardContainer.Location = New Point(190, 73)
+        DashboardContainer.Location = New Point(210, 73)
         DashboardContainer.Name = "DashboardContainer"
-        DashboardContainer.Size = New Size(917, 564)
+        DashboardContainer.Size = New Size(897, 564)
         DashboardContainer.TabIndex = 2
         ' 
-        ' DashboardMenuPanel
+        ' Menu
         ' 
-        DashboardMenuPanel.BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
-        DashboardMenuPanel.BorderStyle = BorderStyle.FixedSingle
-        DashboardMenuPanel.Controls.Add(AccountPanel)
-        DashboardMenuPanel.Controls.Add(OrderPanel)
-        DashboardMenuPanel.Controls.Add(ProductPanel)
-        DashboardMenuPanel.Controls.Add(DashboardPanel)
-        DashboardMenuPanel.Dock = DockStyle.Left
-        DashboardMenuPanel.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        DashboardMenuPanel.Location = New Point(0, 73)
-        DashboardMenuPanel.Name = "DashboardMenuPanel"
-        DashboardMenuPanel.Size = New Size(190, 564)
-        DashboardMenuPanel.TabIndex = 1
+        Menu.BackColor = Color.White
+        Menu.Controls.Add(AccountPanel)
+        Menu.Controls.Add(OrderPanel)
+        Menu.Controls.Add(ProductPanel)
+        Menu.Controls.Add(DashboardPanel)
+        Menu.Dock = DockStyle.Left
+        Menu.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        Menu.Location = New Point(0, 73)
+        Menu.Name = "Menu"
+        Menu.Size = New Size(190, 564)
+        Menu.TabIndex = 1
         ' 
         ' AccountPanel
         ' 
@@ -99,7 +98,7 @@ Partial Class Dashboard
         AccountPanel.Dock = DockStyle.Top
         AccountPanel.Location = New Point(0, 150)
         AccountPanel.Name = "AccountPanel"
-        AccountPanel.Size = New Size(188, 50)
+        AccountPanel.Size = New Size(190, 50)
         AccountPanel.TabIndex = 3
         ' 
         ' AccountButton
@@ -136,7 +135,7 @@ Partial Class Dashboard
         OrderPanel.Dock = DockStyle.Top
         OrderPanel.Location = New Point(0, 100)
         OrderPanel.Name = "OrderPanel"
-        OrderPanel.Size = New Size(188, 50)
+        OrderPanel.Size = New Size(190, 50)
         OrderPanel.TabIndex = 2
         ' 
         ' OrderButton
@@ -173,7 +172,7 @@ Partial Class Dashboard
         ProductPanel.Dock = DockStyle.Top
         ProductPanel.Location = New Point(0, 50)
         ProductPanel.Name = "ProductPanel"
-        ProductPanel.Size = New Size(188, 50)
+        ProductPanel.Size = New Size(190, 50)
         ProductPanel.TabIndex = 1
         ' 
         ' ProductButton
@@ -204,14 +203,14 @@ Partial Class Dashboard
         ' 
         ' DashboardPanel
         ' 
-        DashboardPanel.BackColor = Color.FromArgb(CByte(184), CByte(135), CByte(70))
+        DashboardPanel.BackColor = Color.Transparent
         DashboardPanel.Controls.Add(DashboardButton)
         DashboardPanel.Controls.Add(PictureBox1)
         DashboardPanel.Cursor = Cursors.Hand
         DashboardPanel.Dock = DockStyle.Top
         DashboardPanel.Location = New Point(0, 0)
         DashboardPanel.Name = "DashboardPanel"
-        DashboardPanel.Size = New Size(188, 50)
+        DashboardPanel.Size = New Size(190, 50)
         DashboardPanel.TabIndex = 0
         ' 
         ' DashboardButton
@@ -242,26 +241,26 @@ Partial Class Dashboard
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
         ' 
-        ' DashboardIconPanel
+        ' Header
         ' 
-        DashboardIconPanel.BorderStyle = BorderStyle.FixedSingle
-        DashboardIconPanel.Controls.Add(DashboardIcon)
-        DashboardIconPanel.Dock = DockStyle.Top
-        DashboardIconPanel.Location = New Point(0, 0)
-        DashboardIconPanel.Name = "DashboardIconPanel"
-        DashboardIconPanel.Size = New Size(1107, 73)
-        DashboardIconPanel.TabIndex = 0
+        Header.BackColor = Color.White
+        Header.Controls.Add(Logo)
+        Header.Dock = DockStyle.Top
+        Header.Location = New Point(0, 0)
+        Header.Name = "Header"
+        Header.Size = New Size(1107, 73)
+        Header.TabIndex = 0
         ' 
-        ' DashboardIcon
+        ' Logo
         ' 
-        DashboardIcon.Dock = DockStyle.Left
-        DashboardIcon.Image = CType(resources.GetObject("DashboardIcon.Image"), Image)
-        DashboardIcon.Location = New Point(0, 0)
-        DashboardIcon.Name = "DashboardIcon"
-        DashboardIcon.Size = New Size(414, 71)
-        DashboardIcon.SizeMode = PictureBoxSizeMode.StretchImage
-        DashboardIcon.TabIndex = 0
-        DashboardIcon.TabStop = False
+        Logo.Dock = DockStyle.Left
+        Logo.Image = CType(resources.GetObject("Logo.Image"), Image)
+        Logo.Location = New Point(0, 0)
+        Logo.Name = "Logo"
+        Logo.Size = New Size(414, 73)
+        Logo.SizeMode = PictureBoxSizeMode.StretchImage
+        Logo.TabIndex = 0
+        Logo.TabStop = False
         ' 
         ' Dashboard
         ' 
@@ -269,11 +268,12 @@ Partial Class Dashboard
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(1107, 637)
         Controls.Add(Panel1)
+        FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
         Name = "Dashboard"
         Text = "Dashboard"
         Panel1.ResumeLayout(False)
-        DashboardMenuPanel.ResumeLayout(False)
+        Menu.ResumeLayout(False)
         AccountPanel.ResumeLayout(False)
         CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         OrderPanel.ResumeLayout(False)
@@ -282,18 +282,18 @@ Partial Class Dashboard
         CType(PictureBox2, ComponentModel.ISupportInitialize).EndInit()
         DashboardPanel.ResumeLayout(False)
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
-        DashboardIconPanel.ResumeLayout(False)
-        CType(DashboardIcon, ComponentModel.ISupportInitialize).EndInit()
+        Header.ResumeLayout(False)
+        CType(Logo, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents DashboardIconPanel As Panel
-    Friend WithEvents DashboardMenuPanel As Panel
+    Friend WithEvents Header As Panel
+    Friend WithEvents Menu As Panel
     Friend WithEvents DashboardPanel As Panel
     Friend WithEvents DashboardButton As Button
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents DashboardIcon As PictureBox
+    Friend WithEvents Logo As PictureBox
     Friend WithEvents DashboardContainer As Panel
     Friend WithEvents AccountPanel As Panel
     Friend WithEvents AccountButton As Button
