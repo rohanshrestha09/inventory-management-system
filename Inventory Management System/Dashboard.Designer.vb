@@ -106,6 +106,8 @@ Partial Class Dashboard
         AccountButton.BackColor = Color.Transparent
         AccountButton.Cursor = Cursors.Hand
         AccountButton.FlatAppearance.BorderSize = 0
+        AccountButton.FlatAppearance.MouseDownBackColor = Color.Transparent
+        AccountButton.FlatAppearance.MouseOverBackColor = Color.Transparent
         AccountButton.FlatStyle = FlatStyle.Flat
         AccountButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         AccountButton.ForeColor = Color.Black
@@ -143,6 +145,8 @@ Partial Class Dashboard
         OrderButton.BackColor = Color.Transparent
         OrderButton.Cursor = Cursors.Hand
         OrderButton.FlatAppearance.BorderSize = 0
+        OrderButton.FlatAppearance.MouseDownBackColor = Color.Transparent
+        OrderButton.FlatAppearance.MouseOverBackColor = Color.Transparent
         OrderButton.FlatStyle = FlatStyle.Flat
         OrderButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         OrderButton.ForeColor = Color.Black
@@ -180,6 +184,8 @@ Partial Class Dashboard
         ProductButton.BackColor = Color.Transparent
         ProductButton.Cursor = Cursors.Hand
         ProductButton.FlatAppearance.BorderSize = 0
+        ProductButton.FlatAppearance.MouseDownBackColor = Color.Transparent
+        ProductButton.FlatAppearance.MouseOverBackColor = Color.Transparent
         ProductButton.FlatStyle = FlatStyle.Flat
         ProductButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         ProductButton.ForeColor = Color.Black

@@ -25,12 +25,17 @@ Partial Class DashboardForm
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        LogoPanel = New Panel()
+        HeaderPanel = New Panel()
         Header = New Label()
         DashboardContainerPanel = New Panel()
         KPIPanelContainer = New Panel()
         Panel12 = New Panel()
         RecentOrdersTable = New DataGridView()
+        OrderID = New DataGridViewTextBoxColumn()
+        TotalOrderAmount = New DataGridViewTextBoxColumn()
+        OrderedAt = New DataGridViewTextBoxColumn()
+        DeliveryStatus = New DataGridViewTextBoxColumn()
+        PaymentMethod = New DataGridViewTextBoxColumn()
         RecentOrdersLabel = New Label()
         KPIPanel = New Panel()
         ProductKPI = New Panel()
@@ -88,12 +93,7 @@ Partial Class DashboardForm
         PhoneNumberLabel = New Label()
         Panel2 = New Panel()
         UserName = New Label()
-        OrderID = New DataGridViewTextBoxColumn()
-        TotalOrderAmount = New DataGridViewTextBoxColumn()
-        OrderedAt = New DataGridViewTextBoxColumn()
-        DeliveryStatus = New DataGridViewTextBoxColumn()
-        PaymentMethod = New DataGridViewTextBoxColumn()
-        LogoPanel.SuspendLayout()
+        HeaderPanel.SuspendLayout()
         DashboardContainerPanel.SuspendLayout()
         KPIPanelContainer.SuspendLayout()
         Panel12.SuspendLayout()
@@ -128,16 +128,16 @@ Partial Class DashboardForm
         Panel2.SuspendLayout()
         SuspendLayout()
         ' 
-        ' LogoPanel
+        ' HeaderPanel
         ' 
-        LogoPanel.BackColor = Color.White
-        LogoPanel.Controls.Add(Header)
-        LogoPanel.Dock = DockStyle.Top
-        LogoPanel.Location = New Point(0, 0)
-        LogoPanel.Name = "LogoPanel"
-        LogoPanel.Padding = New Padding(9)
-        LogoPanel.Size = New Size(917, 50)
-        LogoPanel.TabIndex = 0
+        HeaderPanel.BackColor = Color.White
+        HeaderPanel.Controls.Add(Header)
+        HeaderPanel.Dock = DockStyle.Top
+        HeaderPanel.Location = New Point(0, 0)
+        HeaderPanel.Name = "HeaderPanel"
+        HeaderPanel.Padding = New Padding(9)
+        HeaderPanel.Size = New Size(917, 50)
+        HeaderPanel.TabIndex = 0
         ' 
         ' Header
         ' 
@@ -194,7 +194,7 @@ Partial Class DashboardForm
         RecentOrdersTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         RecentOrdersTable.BackgroundColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         RecentOrdersTable.CellBorderStyle = DataGridViewCellBorderStyle.Raised
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         DataGridViewCellStyle1.Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
@@ -230,6 +230,32 @@ Partial Class DashboardForm
         RecentOrdersTable.ScrollBars = ScrollBars.Vertical
         RecentOrdersTable.Size = New Size(647, 182)
         RecentOrdersTable.TabIndex = 1
+        ' 
+        ' OrderID
+        ' 
+        OrderID.HeaderText = "Order ID"
+        OrderID.Name = "OrderID"
+        OrderID.ToolTipText = "Click to sort"
+        ' 
+        ' TotalOrderAmount
+        ' 
+        TotalOrderAmount.HeaderText = "Total Order Amount"
+        TotalOrderAmount.Name = "TotalOrderAmount"
+        ' 
+        ' OrderedAt
+        ' 
+        OrderedAt.HeaderText = "Ordered At"
+        OrderedAt.Name = "OrderedAt"
+        ' 
+        ' DeliveryStatus
+        ' 
+        DeliveryStatus.HeaderText = "Delivery Status"
+        DeliveryStatus.Name = "DeliveryStatus"
+        ' 
+        ' PaymentMethod
+        ' 
+        PaymentMethod.HeaderText = "Payment Method"
+        PaymentMethod.Name = "PaymentMethod"
         ' 
         ' RecentOrdersLabel
         ' 
@@ -880,32 +906,6 @@ Partial Class DashboardForm
         UserName.TabIndex = 0
         UserName.Text = "Welcome Rohan Shrestha"
         ' 
-        ' OrderID
-        ' 
-        OrderID.HeaderText = "Order ID"
-        OrderID.Name = "OrderID"
-        OrderID.ToolTipText = "Click to sort"
-        ' 
-        ' TotalOrderAmount
-        ' 
-        TotalOrderAmount.HeaderText = "Total Order Amount"
-        TotalOrderAmount.Name = "TotalOrderAmount"
-        ' 
-        ' OrderedAt
-        ' 
-        OrderedAt.HeaderText = "Ordered At"
-        OrderedAt.Name = "OrderedAt"
-        ' 
-        ' DeliveryStatus
-        ' 
-        DeliveryStatus.HeaderText = "Delivery Status"
-        DeliveryStatus.Name = "DeliveryStatus"
-        ' 
-        ' PaymentMethod
-        ' 
-        PaymentMethod.HeaderText = "Payment Method"
-        PaymentMethod.Name = "PaymentMethod"
-        ' 
         ' DashboardForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 14F)
@@ -913,13 +913,13 @@ Partial Class DashboardForm
         BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
         ClientSize = New Size(917, 564)
         Controls.Add(DashboardContainerPanel)
-        Controls.Add(LogoPanel)
+        Controls.Add(HeaderPanel)
         Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
         FormBorderStyle = FormBorderStyle.None
         Name = "DashboardForm"
         Text = "DashboardForm"
-        LogoPanel.ResumeLayout(False)
-        LogoPanel.PerformLayout()
+        HeaderPanel.ResumeLayout(False)
+        HeaderPanel.PerformLayout()
         DashboardContainerPanel.ResumeLayout(False)
         KPIPanelContainer.ResumeLayout(False)
         Panel12.ResumeLayout(False)
@@ -970,7 +970,7 @@ Partial Class DashboardForm
         ResumeLayout(False)
     End Sub
 
-    Friend WithEvents LogoPanel As Panel
+    Friend WithEvents HeaderPanel As Panel
     Friend WithEvents Header As Label
     Friend WithEvents DashboardContainerPanel As Panel
     Friend WithEvents KPIPanelContainer As Panel

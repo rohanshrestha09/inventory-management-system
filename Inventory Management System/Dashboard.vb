@@ -21,4 +21,8 @@ Public Class Dashboard
     Private Sub DashboardButton_Click(sender As Object, e As EventArgs) Handles DashboardButton.Click
         SwitchPanel(DashboardForm, DashboardPanel)
     End Sub
+
+    Private Sub OrderButton_Click(sender As Object, e As EventArgs) Handles OrderButton.Click
+        SwitchPanel(OrderForm, OrderPanel)
+    End Sub
 End Class
