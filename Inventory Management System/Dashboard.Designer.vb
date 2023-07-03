@@ -63,7 +63,7 @@ Partial Class Dashboard
         Panel1.Dock = DockStyle.Fill
         Panel1.Location = New Point(0, 0)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(1107, 637)
+        Panel1.Size = New Size(1127, 637)
         Panel1.TabIndex = 0
         ' 
         ' DashboardContainer
@@ -73,7 +73,7 @@ Partial Class Dashboard
         DashboardContainer.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         DashboardContainer.Location = New Point(210, 73)
         DashboardContainer.Name = "DashboardContainer"
-        DashboardContainer.Size = New Size(897, 564)
+        DashboardContainer.Size = New Size(917, 564)
         DashboardContainer.TabIndex = 2
         ' 
         ' Menu
@@ -248,7 +248,7 @@ Partial Class Dashboard
         Header.Dock = DockStyle.Top
         Header.Location = New Point(0, 0)
         Header.Name = "Header"
-        Header.Size = New Size(1107, 73)
+        Header.Size = New Size(1127, 73)
         Header.TabIndex = 0
         ' 
         ' Logo
@@ -266,7 +266,7 @@ Partial Class Dashboard
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(1107, 637)
+        ClientSize = New Size(1127, 637)
         Controls.Add(Panel1)
         FormBorderStyle = FormBorderStyle.FixedSingle
         MaximizeBox = False
