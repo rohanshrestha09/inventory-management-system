@@ -1,0 +1,19 @@
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory Management System.vbproj.AssemblyReference.cache
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory_Management_System.LoginForm.resources
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory Management System.vbproj.GenerateResource.cache
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory Management System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory Management System.AssemblyInfoInputs.cache
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory Management System.AssemblyInfo.vb
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory Management System.vbproj.CoreCompileInputs.cache
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\bin\Debug\net6.0-windows\Inventory Management System.exe
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\bin\Debug\net6.0-windows\Inventory Management System.deps.json
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\bin\Debug\net6.0-windows\Inventory Management System.runtimeconfig.json
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\bin\Debug\net6.0-windows\Inventory Management System.dll
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\bin\Debug\net6.0-windows\Inventory Management System.pdb
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory Management System.dll
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\refint\Inventory Management System.dll
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory Management System.pdb
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory Management System.genruntimeconfig.cache
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\ref\Inventory Management System.dll
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory_Management_System.Dashboard.resources
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory_Management_System.Resources.resources
