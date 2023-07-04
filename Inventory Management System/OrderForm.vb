@@ -6,8 +6,7 @@
             {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"},
             {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"},
             {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"}
-            }
-
+}
         For rowIndex As Integer = 0 To RowsData.GetUpperBound(0)
             Dim Row = New DataGridViewRow()
 
