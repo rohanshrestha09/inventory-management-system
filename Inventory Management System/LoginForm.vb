@@ -1,22 +1,22 @@
 ﻿Public Class LoginForm
+
+    Public Shared UserID As String
     Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 
-
-
-    Private Sub PhoneNumberInput_TextChanged(sender As Object, e As EventArgs) Handles PhoneNumberInput.TextChanged
-
-    End Sub
-
     Private Sub LoginButton_Click(sender As Object, e As EventArgs) Handles LoginButton.Click
-        If (PhoneNumberInput.Text = "9800000000" And PasswordInput.Text = "admin") Then
-            Hide()
-            Dashboard.ShowDialog()
+        Try
+            Dim Record = User.Login(PhoneNumberInput.Text, PasswordInput.Text)
 
-        Else
-            MsgBox("Invalid Credentials")
-        End If
+            UserID = Record.Item("user_id")
+
+            Hide()
+
+            Dashboard.ShowDialog()
+        Catch Ex As Exception
+            MsgBox(Ex.Message)
+        End Try
     End Sub
 
     Private Sub PasswordInput_TextChanged(sender As Object, e As EventArgs) Handles PasswordInput.TextChanged
