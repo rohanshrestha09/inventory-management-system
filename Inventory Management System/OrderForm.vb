@@ -1,23 +1,19 @@
 ﻿Public Class OrderForm
     Private Sub OrderForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim RowsData As Object = {
-            {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"},
-            {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"},
-            {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"},
-            {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"},
-            {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"}
-}
-        For rowIndex As Integer = 0 To RowsData.GetUpperBound(0)
-            Dim Row = New DataGridViewRow()
+        Try
+            Dim AuthUser = User.GetUser(LoginForm.UserID)
 
-            Row.CreateCells(OrdersTable)
+            Dim GetAllOrdersArgs = New GetAllOrdersArgs With {
+                .Search = SearchInput.Text,
+                  .UserID = If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id")))
+            }
 
-            For colIndex As Integer = 0 To RowsData.GetUpperBound(1)
-                Row.Cells(colIndex).Value = RowsData(rowIndex, colIndex)
-            Next colIndex
+            Dim DataTable = Order.GetAllOrders(GetAllOrdersArgs)
 
-            OrdersTable.Rows.Add(Row)
-        Next rowIndex
+            OrdersTable.DataSource = DataTable
+        Catch Ex As Exception
+            MsgBox(Ex.Message)
+        End Try
     End Sub
 
     Private Sub SearchInput_GotFocus(sender As Object, e As EventArgs) Handles SearchInput.GotFocus
@@ -26,5 +22,22 @@
 
     Private Sub SearchInput_LostFocus(sender As Object, e As EventArgs) Handles SearchInput.LostFocus
         SearchInputPanel.BorderStyle = BorderStyle.None
+    End Sub
+
+    Private Sub SearchInput_TextChanged(sender As Object, e As EventArgs) Handles SearchInput.TextChanged
+        Try
+            Dim AuthUser = User.GetUser(LoginForm.UserID)
+
+            Dim GetAllOrdersArgs = New GetAllOrdersArgs With {
+                .Search = SearchInput.Text,
+                  .UserID = If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id")))
+            }
+
+            Dim DataTable = Order.GetAllOrders(GetAllOrdersArgs)
+
+            OrdersTable.DataSource = DataTable
+        Catch Ex As Exception
+            MsgBox(Ex.Message)
+        End Try
     End Sub
 End Class

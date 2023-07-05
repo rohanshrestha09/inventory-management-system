@@ -34,6 +34,7 @@ create table orders(
     delivery_status enum('COMPLETED','IN_PROCESS','CANCELLED') not null default 'IN_PROCESS',
     payment_method enum('CASH','ESEWA','KHALTI','BANK') not null default 'CASH',
     user_id int not null,
+    constraint check_total_paid_amount check(total_paid_amount <= total_amount),
     foreign key(user_id) references users(user_id),
     created_at timestamp default current_timestamp,
     updated_at datetime default current_timestamp on update current_timestamp

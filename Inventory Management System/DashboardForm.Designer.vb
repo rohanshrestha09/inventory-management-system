@@ -31,11 +31,6 @@ Partial Class DashboardForm
         KPIPanelContainer = New Panel()
         Panel12 = New Panel()
         RecentOrdersTable = New DataGridView()
-        OrderID = New DataGridViewTextBoxColumn()
-        TotalOrderAmount = New DataGridViewTextBoxColumn()
-        OrderedAt = New DataGridViewTextBoxColumn()
-        DeliveryStatus = New DataGridViewTextBoxColumn()
-        PaymentMethod = New DataGridViewTextBoxColumn()
         RecentOrdersLabel = New Label()
         KPIPanel = New Panel()
         ProductKPI = New Panel()
@@ -203,7 +198,6 @@ Partial Class DashboardForm
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         RecentOrdersTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         RecentOrdersTable.ColumnHeadersHeight = 35
-        RecentOrdersTable.Columns.AddRange(New DataGridViewColumn() {OrderID, TotalOrderAmount, OrderedAt, DeliveryStatus, PaymentMethod})
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = SystemColors.Window
         DataGridViewCellStyle2.Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
@@ -230,32 +224,6 @@ Partial Class DashboardForm
         RecentOrdersTable.ScrollBars = ScrollBars.Vertical
         RecentOrdersTable.Size = New Size(647, 182)
         RecentOrdersTable.TabIndex = 1
-        ' 
-        ' OrderID
-        ' 
-        OrderID.HeaderText = "Order ID"
-        OrderID.Name = "OrderID"
-        OrderID.ToolTipText = "Click to sort"
-        ' 
-        ' TotalOrderAmount
-        ' 
-        TotalOrderAmount.HeaderText = "Total Order Amount"
-        TotalOrderAmount.Name = "TotalOrderAmount"
-        ' 
-        ' OrderedAt
-        ' 
-        OrderedAt.HeaderText = "Ordered At"
-        OrderedAt.Name = "OrderedAt"
-        ' 
-        ' DeliveryStatus
-        ' 
-        DeliveryStatus.HeaderText = "Delivery Status"
-        DeliveryStatus.Name = "DeliveryStatus"
-        ' 
-        ' PaymentMethod
-        ' 
-        PaymentMethod.HeaderText = "Payment Method"
-        PaymentMethod.Name = "PaymentMethod"
         ' 
         ' RecentOrdersLabel
         ' 
@@ -1047,9 +1015,4 @@ Partial Class DashboardForm
     Friend WithEvents Panel12 As Panel
     Friend WithEvents RecentOrdersLabel As Label
     Friend WithEvents RecentOrdersTable As DataGridView
-    Friend WithEvents OrderID As DataGridViewTextBoxColumn
-    Friend WithEvents TotalOrderAmount As DataGridViewTextBoxColumn
-    Friend WithEvents OrderedAt As DataGridViewTextBoxColumn
-    Friend WithEvents DeliveryStatus As DataGridViewTextBoxColumn
-    Friend WithEvents PaymentMethod As DataGridViewTextBoxColumn
 End Class

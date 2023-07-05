@@ -1,55 +1,63 @@
-﻿Imports Microsoft.VisualBasic.ApplicationServices
-Imports MySql.Data.MySqlClient
+﻿Imports MySql.Data.MySqlClient
 
 Public Class Order
-    Public Function GetPaginatedOrders(ByVal Page As Integer, Size As Integer)
+    Public Shared Function GetMostRecentOrders(ByVal GetAllOrdersArgs As GetAllOrdersArgs) As DataTable
         Database.Connection.Open()
 
-        Dim Query As String = $"SELECT * FROM orders LIMIT @Size OFFSET @Page"
+        Dim Query As String = "SELECT order_id as 'Order ID', total_amount as 'Total Order Amount', created_at as 'Ordered At', delivery_status as 'Delivery Status', payment_method as 'Payment Method' " &
+            "WHERE (users.user_id = @UserID OR @UserID IS NULL) " &
+            "ORDER BY created_at DESC " &
+            If(GetAllOrdersArgs.Size > 0, "LIMIT @Size OFFSET @Page", "")
 
         Dim Command As New MySqlCommand(Query, Database.Connection)
 
-        Command.Parameters.AddWithValue("@Size", Size)
+        Command.Parameters.AddWithValue("@Search", "%" & GetAllOrdersArgs.Search & "%")
 
-        Command.Parameters.AddWithValue("@Page", Page - 1)
+        Command.Parameters.AddWithValue("@UserId", If(GetAllOrdersArgs.UserID = 0, DBNull.Value, GetAllOrdersArgs.UserID))
+
+        Command.Parameters.AddWithValue("@Size", GetAllOrdersArgs.Size)
+
+        Command.Parameters.AddWithValue("@Page", (GetAllOrdersArgs.Page - 1) * GetAllOrdersArgs.Size)
 
         Dim Adapter As New MySqlDataAdapter(Command)
 
-        Dim DataSet As New DataSet()
+        Dim DataTable As New DataTable()
 
-        Adapter.Fill(DataSet, "orders")
-
-        Dim Records As DataRowCollection
-
-        Records = DataSet.Tables("orders").Rows
+        Adapter.Fill(DataTable)
 
         Database.Connection.Close()
 
-        Return Records
+        Return DataTable
     End Function
 
-    Public Function GetAllOrders(ByVal Search As String)
+    Public Shared Function GetAllOrders(ByVal GetAllOrdersArgs As GetAllOrdersArgs) As DataTable
         Database.Connection.Open()
 
-        Dim Query As String = $"SELECT * FROM orders JOIN users ON orders.user_id = users.user_id WHERE users.name LIKE %@Search%"
+        Dim Query As String = "SELECT orders.order_id as 'Order ID', users.name as 'Customer', users.shop_name as 'Shop Name', orders.total_amount as 'Total Order Amount', orders.created_at as 'Ordered At', orders.delivery_status as 'Delivery Status', orders.payment_method as 'Payment Method' " &
+            "FROM orders INNER JOIN users on users.user_id = orders.user_id " &
+            "WHERE (users.name LIKE @Search) AND (users.user_id = @UserID OR @UserID IS NULL) " &
+            "ORDER BY orders.created_at DESC " &
+            If(GetAllOrdersArgs.Size > 0, "LIMIT @Size OFFSET @Page", "")
 
         Dim Command As New MySqlCommand(Query, Database.Connection)
 
-        Command.Parameters.AddWithValue("@Search", Search)
+        Command.Parameters.AddWithValue("@Search", "%" & GetAllOrdersArgs.Search & "%")
+
+        Command.Parameters.AddWithValue("@UserId", If(GetAllOrdersArgs.UserID = 0, DBNull.Value, GetAllOrdersArgs.UserID))
+
+        Command.Parameters.AddWithValue("@Size", GetAllOrdersArgs.Size)
+
+        Command.Parameters.AddWithValue("@Page", (GetAllOrdersArgs.Page - 1) * GetAllOrdersArgs.Size)
 
         Dim Adapter As New MySqlDataAdapter(Command)
 
-        Dim DataSet As New DataSet()
+        Dim DataTable As New DataTable()
 
-        Adapter.Fill(DataSet, "orders")
-
-        Dim Records As DataRowCollection
-
-        Records = DataSet.Tables("orders").Rows
+        Adapter.Fill(DataTable)
 
         Database.Connection.Close()
 
-        Return Records
+        Return DataTable
     End Function
 
     Public Function CreateOrder(ByVal CreateOrderArgs As CreateOrderArgs)
@@ -72,6 +80,13 @@ Public Class Order
 
         Database.Connection.Close()
     End Function
+End Class
+
+Public Class GetAllOrdersArgs
+    Public UserID As Integer
+    Public Search As String
+    Public Page As Integer
+    Public Size As Integer
 End Class
 
 Public Class CreateOrderArgs

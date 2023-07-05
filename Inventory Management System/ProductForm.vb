@@ -1,5 +1,5 @@
 ﻿Public Class ProductForm
-    Private Sub OrderForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub ProductForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Dim DataTable = Product.GetAllProducts(SearchInput.Text)
 

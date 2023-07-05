@@ -1,38 +1,30 @@
 ﻿Public Class DashboardForm
     Private Sub DashboardForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Try
+            Dim AuthUser = User.GetUser(LoginForm.UserID)
 
-        Dim AuthUser = User.GetUser(LoginForm.UserID)
+            UserName.Text = $"Welcome {AuthUser.Item("name")}"
 
-        UserName.Text = $"Welcome {AuthUser.Item("name")}"
+            PhoneNumber.Text = AuthUser.Item("phone")
 
-        PhoneNumber.Text = AuthUser.Item("phone")
+            Address.Text = AuthUser.Item("address")
 
-        Address.Text = AuthUser.Item("address")
+            DateOfBirth.Text = AuthUser.Item("date_of_birth")
 
-        DateOfBirth.Text = AuthUser.Item("date_of_birth")
+            RegisteredAt.Text = AuthUser.Item("created_at")
 
-        RegisteredAt.Text = AuthUser.Item("created_at")
-
-        Dim RowsData As Object = {
-            {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"},
-            {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"},
-            {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"},
-            {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"},
-            {2000, 500000, "Jun 13, 2022", "Delivered", "Esewa"}
+            Dim GetAllOrdersArgs = New GetAllOrdersArgs With {
+                .Page = 1,
+                .Size = 4,
+                .UserID = If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id")))
             }
 
-        For rowIndex As Integer = 0 To RowsData.GetUpperBound(0)
-            Dim Row = New DataGridViewRow()
+            Dim DataTable = Order.GetAllOrders(GetAllOrdersArgs)
 
-            Row.CreateCells(RecentOrdersTable)
-
-            For colIndex As Integer = 0 To RowsData.GetUpperBound(1)
-                Row.Cells(colIndex).Value = RowsData(rowIndex, colIndex)
-            Next colIndex
-
-            RecentOrdersTable.Rows.Add(Row)
-        Next rowIndex
-
+            RecentOrdersTable.DataSource = DataTable
+        Catch Ex As Exception
+            MsgBox(Ex.Message)
+        End Try
     End Sub
 
     Private Sub OrdersKPITimeSelector_SelectedValueChanged(sender As Object, e As EventArgs) Handles OrderKPITimeSelector.SelectedValueChanged
