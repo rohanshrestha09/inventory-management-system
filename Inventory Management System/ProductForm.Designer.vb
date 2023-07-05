@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class OrderForm
+Partial Class ProductForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -26,17 +26,17 @@ Partial Class OrderForm
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         HeaderPanel = New Panel()
         Header = New Label()
-        OrderContainerPanel = New Panel()
+        ProductContainerPanel = New Panel()
         Panel1 = New Panel()
         SearchInputPanel = New Panel()
         SearchInput = New TextBox()
-        CreateOrderButton = New Button()
-        OrdersTable = New DataGridView()
+        CreateProductButton = New Button()
+        ProductsTable = New DataGridView()
         HeaderPanel.SuspendLayout()
-        OrderContainerPanel.SuspendLayout()
+        ProductContainerPanel.SuspendLayout()
         Panel1.SuspendLayout()
         SearchInputPanel.SuspendLayout()
-        CType(OrdersTable, ComponentModel.ISupportInitialize).BeginInit()
+        CType(ProductsTable, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' HeaderPanel
@@ -48,7 +48,7 @@ Partial Class OrderForm
         HeaderPanel.Name = "HeaderPanel"
         HeaderPanel.Padding = New Padding(9)
         HeaderPanel.Size = New Size(917, 47)
-        HeaderPanel.TabIndex = 1
+        HeaderPanel.TabIndex = 2
         ' 
         ' Header
         ' 
@@ -57,27 +57,27 @@ Partial Class OrderForm
         Header.Font = New Font("CaskaydiaCove NF", 20.25F, FontStyle.Bold, GraphicsUnit.Point)
         Header.Location = New Point(9, 9)
         Header.Name = "Header"
-        Header.Size = New Size(94, 31)
+        Header.Size = New Size(126, 31)
         Header.TabIndex = 0
-        Header.Text = "Order"
+        Header.Text = "Product"
         ' 
-        ' OrderContainerPanel
+        ' ProductContainerPanel
         ' 
-        OrderContainerPanel.BackColor = Color.White
-        OrderContainerPanel.Controls.Add(Panel1)
-        OrderContainerPanel.Controls.Add(OrdersTable)
-        OrderContainerPanel.Dock = DockStyle.Bottom
-        OrderContainerPanel.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
-        OrderContainerPanel.Location = New Point(0, 68)
-        OrderContainerPanel.Name = "OrderContainerPanel"
-        OrderContainerPanel.Padding = New Padding(12)
-        OrderContainerPanel.Size = New Size(917, 496)
-        OrderContainerPanel.TabIndex = 2
+        ProductContainerPanel.BackColor = Color.White
+        ProductContainerPanel.Controls.Add(Panel1)
+        ProductContainerPanel.Controls.Add(ProductsTable)
+        ProductContainerPanel.Dock = DockStyle.Bottom
+        ProductContainerPanel.Font = New Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point)
+        ProductContainerPanel.Location = New Point(0, 68)
+        ProductContainerPanel.Name = "ProductContainerPanel"
+        ProductContainerPanel.Padding = New Padding(12)
+        ProductContainerPanel.Size = New Size(917, 496)
+        ProductContainerPanel.TabIndex = 3
         ' 
         ' Panel1
         ' 
         Panel1.Controls.Add(SearchInputPanel)
-        Panel1.Controls.Add(CreateOrderButton)
+        Panel1.Controls.Add(CreateProductButton)
         Panel1.Dock = DockStyle.Top
         Panel1.Location = New Point(12, 12)
         Panel1.Name = "Panel1"
@@ -103,34 +103,34 @@ Partial Class OrderForm
         SearchInput.ForeColor = Color.Black
         SearchInput.Location = New Point(3, 9)
         SearchInput.Name = "SearchInput"
-        SearchInput.PlaceholderText = "Search Customer"
+        SearchInput.PlaceholderText = "Search Product"
         SearchInput.Size = New Size(729, 16)
         SearchInput.TabIndex = 1
         ' 
-        ' CreateOrderButton
+        ' CreateProductButton
         ' 
-        CreateOrderButton.BackColor = Color.FromArgb(CByte(0), CByte(120), CByte(212))
-        CreateOrderButton.Cursor = Cursors.Hand
-        CreateOrderButton.Dock = DockStyle.Right
-        CreateOrderButton.FlatStyle = FlatStyle.Flat
-        CreateOrderButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        CreateOrderButton.ForeColor = Color.White
-        CreateOrderButton.Location = New Point(743, 0)
-        CreateOrderButton.Name = "CreateOrderButton"
-        CreateOrderButton.Size = New Size(150, 36)
-        CreateOrderButton.TabIndex = 0
-        CreateOrderButton.Text = "+ Create Order"
-        CreateOrderButton.UseVisualStyleBackColor = False
+        CreateProductButton.BackColor = Color.FromArgb(CByte(0), CByte(120), CByte(212))
+        CreateProductButton.Cursor = Cursors.Hand
+        CreateProductButton.Dock = DockStyle.Right
+        CreateProductButton.FlatStyle = FlatStyle.Flat
+        CreateProductButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        CreateProductButton.ForeColor = Color.White
+        CreateProductButton.Location = New Point(743, 0)
+        CreateProductButton.Name = "CreateProductButton"
+        CreateProductButton.Size = New Size(150, 36)
+        CreateProductButton.TabIndex = 0
+        CreateProductButton.Text = "+ Create Product"
+        CreateProductButton.UseVisualStyleBackColor = False
         ' 
-        ' OrdersTable
+        ' ProductsTable
         ' 
-        OrdersTable.AllowUserToAddRows = False
-        OrdersTable.AllowUserToDeleteRows = False
-        OrdersTable.AllowUserToResizeColumns = False
-        OrdersTable.AllowUserToResizeRows = False
-        OrdersTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        OrdersTable.BackgroundColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
-        OrdersTable.CellBorderStyle = DataGridViewCellBorderStyle.Raised
+        ProductsTable.AllowUserToAddRows = False
+        ProductsTable.AllowUserToDeleteRows = False
+        ProductsTable.AllowUserToResizeColumns = False
+        ProductsTable.AllowUserToResizeRows = False
+        ProductsTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
+        ProductsTable.BackgroundColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
+        ProductsTable.CellBorderStyle = DataGridViewCellBorderStyle.Raised
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         DataGridViewCellStyle1.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
@@ -138,8 +138,8 @@ Partial Class OrderForm
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        OrdersTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        OrdersTable.ColumnHeadersHeight = 40
+        ProductsTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        ProductsTable.ColumnHeadersHeight = 40
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = SystemColors.Window
         DataGridViewCellStyle2.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
@@ -147,47 +147,46 @@ Partial Class OrderForm
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        OrdersTable.DefaultCellStyle = DataGridViewCellStyle2
-        OrdersTable.Dock = DockStyle.Bottom
-        OrdersTable.GridColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
-        OrdersTable.Location = New Point(12, 59)
-        OrdersTable.Name = "OrdersTable"
-        OrdersTable.RowHeadersVisible = False
-        OrdersTable.RowTemplate.Height = 35
-        OrdersTable.RowTemplate.Resizable = DataGridViewTriState.False
-        OrdersTable.ScrollBars = ScrollBars.Vertical
-        OrdersTable.Size = New Size(893, 425)
-        OrdersTable.TabIndex = 1
+        ProductsTable.DefaultCellStyle = DataGridViewCellStyle2
+        ProductsTable.Dock = DockStyle.Bottom
+        ProductsTable.GridColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
+        ProductsTable.Location = New Point(12, 59)
+        ProductsTable.Name = "ProductsTable"
+        ProductsTable.RowHeadersVisible = False
+        ProductsTable.RowTemplate.Height = 35
+        ProductsTable.RowTemplate.Resizable = DataGridViewTriState.False
+        ProductsTable.ScrollBars = ScrollBars.Vertical
+        ProductsTable.Size = New Size(893, 425)
+        ProductsTable.TabIndex = 1
         ' 
-        ' OrderForm
+        ' ProductForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 14F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
         ClientSize = New Size(917, 564)
-        Controls.Add(OrderContainerPanel)
+        Controls.Add(ProductContainerPanel)
         Controls.Add(HeaderPanel)
         Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
         FormBorderStyle = FormBorderStyle.None
-        Name = "OrderForm"
-        StartPosition = FormStartPosition.Manual
-        Text = "OrderForm"
+        Name = "ProductForm"
+        Text = "ProductForm"
         HeaderPanel.ResumeLayout(False)
         HeaderPanel.PerformLayout()
-        OrderContainerPanel.ResumeLayout(False)
+        ProductContainerPanel.ResumeLayout(False)
         Panel1.ResumeLayout(False)
         SearchInputPanel.ResumeLayout(False)
         SearchInputPanel.PerformLayout()
-        CType(OrdersTable, ComponentModel.ISupportInitialize).EndInit()
+        CType(ProductsTable, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
 
     Friend WithEvents HeaderPanel As Panel
     Friend WithEvents Header As Label
-    Friend WithEvents OrderContainerPanel As Panel
-    Friend WithEvents OrdersTable As DataGridView
+    Friend WithEvents ProductContainerPanel As Panel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents CreateOrderButton As Button
-    Friend WithEvents SearchInput As TextBox
     Friend WithEvents SearchInputPanel As Panel
+    Friend WithEvents SearchInput As TextBox
+    Friend WithEvents CreateProductButton As Button
+    Friend WithEvents ProductsTable As DataGridView
 End Class

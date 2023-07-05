@@ -1,6 +1,7 @@
 ﻿Public Class LoginForm
 
     Public Shared UserID As String
+
     Private Sub LoginForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
@@ -22,7 +23,6 @@
     Private Sub PasswordInput_TextChanged(sender As Object, e As EventArgs) Handles PasswordInput.TextChanged
 
     End Sub
-
 
     Private Sub ShowPasswordCheckbox_CheckedChanged(sender As Object, e As EventArgs) Handles ShowPasswordCheckbox.CheckedChanged
         PasswordInput.PasswordChar = If(ShowPasswordCheckbox.Checked, ControlChars.NullChar, "•")

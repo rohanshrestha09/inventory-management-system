@@ -1,68 +1,77 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports Microsoft.VisualBasic.ApplicationServices
+Imports MySql.Data.MySqlClient
 
 Public Class Order
     Public Function GetPaginatedOrders(ByVal Page As Integer, Size As Integer)
-        Dim Data As Object(,) = Nothing
-
-        Dim RowIndex As Integer = 0
-
-
         Database.Connection.Open()
 
-        Dim Query As String = $"SELECT * FROM orders LIMIT {Size} OFFSET {Page - 1}"
+        Dim Query As String = $"SELECT * FROM orders LIMIT @Size OFFSET @Page"
 
-        Dim Command As New MySqlCommand(Query)
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@Size", Size)
+
+        Command.Parameters.AddWithValue("@Page", Page - 1)
+
+        Dim Adapter As New MySqlDataAdapter(Command)
+
+        Dim DataSet As New DataSet()
+
+        Adapter.Fill(DataSet, "orders")
+
+        Dim Records As DataRowCollection
+
+        Records = DataSet.Tables("orders").Rows
 
         Database.Connection.Close()
 
-        Return Data
+        Return Records
     End Function
 
-    'Public Function GetAllOrders(ByVal Search As String)
-    '    Dim Data As Object(,) = Nothing
+    Public Function GetAllOrders(ByVal Search As String)
+        Database.Connection.Open()
 
-    '    Dim RowIndex As Integer = 0
+        Dim Query As String = $"SELECT * FROM orders JOIN users ON orders.user_id = users.user_id WHERE users.name LIKE %@Search%"
 
-    '    Using Connection As New SqlConnection(DatabaseConnection.ConnectionString)
-    '        Connection.Open()
+        Dim Command As New MySqlCommand(Query, Database.Connection)
 
-    '        Dim Query As String = $"SELECT * FROM orders WHERE customers LIKE %{Search}%"
+        Command.Parameters.AddWithValue("@Search", Search)
 
-    '        Using Command As New SqlCommand(Query, Connection)
-    '            Using Reader As SqlDataReader = Command.ExecuteReader()
-    '                While Reader.Read()
-    '                    Data(RowIndex, 0) = Reader("Column1").ToString()
-    '                    Data(RowIndex, 1) = Convert.ToInt32(Reader("Column2"))
-    '                    Data(RowIndex, 2) = Convert.ToDateTime(Reader("Column3"))
+        Dim Adapter As New MySqlDataAdapter(Command)
 
-    '                    RowIndex += 1
-    '                End While
-    '            End Using
-    '        End Using
+        Dim DataSet As New DataSet()
 
-    '        Connection.Close()
-    '    End Using
+        Adapter.Fill(DataSet, "orders")
 
-    '    Return Data
-    'End Function
+        Dim Records As DataRowCollection
 
-    'Public Function CreateOrder(ByVal CreateOrderArgs As CreateOrderArgs)
-    '    Using Connection As New SqlConnection(DatabaseConnection.ConnectionString)
-    '        Connection.Open()
+        Records = DataSet.Tables("orders").Rows
 
-    '        Dim Query As String = "INSERT INTO TableName (Column1, Column2, Column3) VALUES (@Value1, @Value2, @Value3)"
+        Database.Connection.Close()
 
-    '        Using Command As New SqlCommand(Query, Connection)
-    '            Command.Parameters.AddWithValue("@Value1", CreateOrderArgs.UserID)
-    '            Command.Parameters.AddWithValue("@Value2", CreateOrderArgs.ProductID)
-    '            Command.Parameters.AddWithValue("@Value3", CreateOrderArgs.DeliveryStatus)
+        Return Records
+    End Function
 
-    '            Command.ExecuteNonQuery()
-    '        End Using
+    Public Function CreateOrder(ByVal CreateOrderArgs As CreateOrderArgs)
+        Database.Connection.Open()
 
-    '        Connection.Close()
-    '    End Using
-    'End Function
+        Dim Query As String = "INSERT INTO TableName (Column1, Column2, Column3) VALUES (@Value1, @Value2, @Value3)"
+
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@Value1", CreateOrderArgs.UserID)
+
+        Command.Parameters.AddWithValue("@Value2", CreateOrderArgs.ProductID)
+
+        Command.Parameters.AddWithValue("@Value3", CreateOrderArgs.DeliveryStatus)
+
+        If Command.ExecuteNonQuery() < 0 Then
+            Database.Connection.Close()
+            Throw New Exception("Something went wrong")
+        End If
+
+        Database.Connection.Close()
+    End Function
 End Class
 
 Public Class CreateOrderArgs

@@ -47,6 +47,7 @@ create table orders_products(
     total_amount int not null,
     foreign key(order_id) references orders(order_id),
     foreign key(product_id) references products(product_id),
+    constraint unique_order_product unique (order_id, product_id)
     created_at timestamp default current_timestamp,
     updated_at datetime default current_timestamp on update current_timestamp
 )
