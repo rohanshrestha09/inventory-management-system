@@ -60,7 +60,7 @@ Public Class Order
         Return DataTable
     End Function
 
-    Public Function CreateOrder(ByVal CreateOrderArgs As CreateOrderArgs)
+    Public Shared Function CreateOrder(ByVal CreateOrderArgs As CreateOrderArgs)
         Database.Connection.Open()
 
         Dim Query As String = "INSERT INTO TableName (Column1, Column2, Column3) VALUES (@Value1, @Value2, @Value3)"

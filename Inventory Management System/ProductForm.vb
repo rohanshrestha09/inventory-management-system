@@ -26,4 +26,14 @@
             MsgBox(Ex.Message)
         End Try
     End Sub
+
+    Private Sub CreateProductButton_Click(sender As Object, e As EventArgs) Handles CreateProductButton.Click
+        Dashboard.DashboardContainer.Controls.Clear()
+
+        CreateProductForm.TopLevel = False
+
+        Dashboard.DashboardContainer.Controls.Add(CreateProductForm)
+
+        CreateProductForm.Show()
+    End Sub
 End Class
