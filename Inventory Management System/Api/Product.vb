@@ -92,6 +92,36 @@ Public Class Product
 
         Database.Connection.Close()
     End Function
+
+    Public Shared Function GetMostBoughtProduct(ByVal UserID As Integer) As DataRow
+        Database.Connection.Open()
+
+        Dim Query As String = "SELECT name as 'product_name', SUM(o.total_units) as 'total_units', SUM(o.total_amount) as 'total_amount' FROM products p " &
+                "INNER JOIN orders o on o.product_id = p.product_id " &
+                "WHERE (o.user_id = @UserID OR @UserID IS NULL) " &
+                "GROUP BY p.name " &
+                "ORDER BY SUM(o.total_units) desc"
+
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@UserId", If(UserID = 0, DBNull.Value, UserID))
+
+        Dim Adapter As New MySqlDataAdapter(Command)
+
+        Dim DataSet As New DataSet()
+
+        Adapter.Fill(DataSet, "products")
+
+        Dim Record As DataRow = Nothing
+
+        If DataSet.Tables("products").Rows.Count > 0 Then
+            Record = DataSet.Tables("products").Rows(0)
+        End If
+
+        Database.Connection.Close()
+
+        Return Record
+    End Function
 End Class
 
 Public Class CreateProductArgs

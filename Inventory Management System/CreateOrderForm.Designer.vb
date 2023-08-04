@@ -610,9 +610,9 @@ Partial Class CreateOrderForm
         ' 
         ' CancelButton
         ' 
-        CancelButton.BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
+        CancelButton.BackColor = Color.FromArgb(240, 244, 247)
         CancelButton.Cursor = Cursors.Hand
-        CancelButton.FlatAppearance.BorderColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
+        CancelButton.FlatAppearance.BorderColor = Color.FromArgb(240, 244, 247)
         CancelButton.FlatAppearance.BorderSize = 0
         CancelButton.FlatStyle = FlatStyle.System
         CancelButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
@@ -626,7 +626,7 @@ Partial Class CreateOrderForm
         ' 
         ' CreateOrderButton
         ' 
-        CreateOrderButton.BackColor = Color.FromArgb(CByte(0), CByte(120), CByte(212))
+        CreateOrderButton.BackColor = Color.FromArgb(0, 120, 212)
         CreateOrderButton.Cursor = Cursors.Hand
         CreateOrderButton.Dock = DockStyle.Left
         CreateOrderButton.FlatStyle = FlatStyle.Flat
@@ -643,7 +643,7 @@ Partial Class CreateOrderForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 14F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
+        BackColor = Color.FromArgb(240, 244, 247)
         ClientSize = New Size(917, 564)
         Controls.Add(CreateOrderContainer)
         Controls.Add(HeaderPanel)

@@ -22,6 +22,26 @@
             Dim DataTable = Order.GetMostRecentOrders(GetAllOrdersArgs)
 
             RecentOrdersTable.DataSource = DataTable
+
+            Dim OrderAnalytics = Order.GetOrderAnalytics(If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id"))))
+
+            If (OrderAnalytics IsNot Nothing) Then
+                TotalOrders.Text = OrderAnalytics.Item("total_orders")
+
+                TotalOrdersDelivered.Text = OrderAnalytics.Item("total_orders_delivered")
+
+                TotalOrdersAmount.Text = "Rs. " & OrderAnalytics.Item("total_orders_amount")
+            End If
+
+            Dim MostBoughtProduct = Product.GetMostBoughtProduct(If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id"))))
+
+            If (MostBoughtProduct IsNot Nothing) Then
+                MostBoughtProductName.Text = MostBoughtProduct.Item("product_name")
+
+                MostBoughtProductTotalAmount.Text = "Rs. " & MostBoughtProduct.Item("total_amount")
+
+                MostBoughtProductTotalUnits.Text = MostBoughtProduct.Item("total_units")
+            End If
         Catch Ex As Exception
             MsgBox(Ex.Message)
         End Try

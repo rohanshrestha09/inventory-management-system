@@ -1,4 +1,5 @@
 ﻿Imports System.Linq
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel
 
 Public Class CreateOrderForm
     Private ProductList As ProductJSON()
@@ -117,6 +118,32 @@ Public Class CreateOrderForm
             OrderForm.OrdersTable.DataSource = DataTable
 
             OrderForm.Show()
+
+            DashboardForm.RecentOrdersTable.DataSource = Order.GetMostRecentOrders(New GetAllOrdersArgs With {
+               .Page = 1,
+               .Size = 4,
+               .UserID = If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id")))
+           })
+
+            Dim OrderAnalytics = Order.GetOrderAnalytics(If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id"))))
+
+            If (OrderAnalytics IsNot Nothing) Then
+                DashboardForm.TotalOrders.Text = OrderAnalytics.Item("total_orders")
+
+                DashboardForm.TotalOrdersDelivered.Text = OrderAnalytics.Item("total_orders_delivered")
+
+                DashboardForm.TotalOrdersAmount.Text = "Rs. " & OrderAnalytics.Item("total_orders_amount")
+            End If
+
+            Dim MostBoughtProduct = Product.GetMostBoughtProduct(If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id"))))
+
+            If (MostBoughtProduct IsNot Nothing) Then
+                DashboardForm.MostBoughtProductName.Text = MostBoughtProduct.Item("product_name")
+
+                DashboardForm.MostBoughtProductTotalAmount.Text = "Rs. " & MostBoughtProduct.Item("total_amount")
+
+                DashboardForm.MostBoughtProductTotalUnits.Text = MostBoughtProduct.Item("total_units")
+            End If
         Catch Ex As Exception
             MsgBox(Ex.Message)
         End Try

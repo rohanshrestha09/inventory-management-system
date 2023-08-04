@@ -301,9 +301,9 @@ Partial Class DashboardForm
         MostBoughtProductTotalAmount.Location = New Point(12, 26)
         MostBoughtProductTotalAmount.Name = "MostBoughtProductTotalAmount"
         MostBoughtProductTotalAmount.Padding = New Padding(0, 5, 0, 0)
-        MostBoughtProductTotalAmount.Size = New Size(79, 20)
+        MostBoughtProductTotalAmount.Size = New Size(47, 20)
         MostBoughtProductTotalAmount.TabIndex = 1
-        MostBoughtProductTotalAmount.Text = "Rs. 20000"
+        MostBoughtProductTotalAmount.Text = "Rs. 0"
         ' 
         ' MostBoughtProductTotalAmountLabel
         ' 
@@ -346,9 +346,9 @@ Partial Class DashboardForm
         MostBoughtProductTotalUnits.Location = New Point(12, 26)
         MostBoughtProductTotalUnits.Name = "MostBoughtProductTotalUnits"
         MostBoughtProductTotalUnits.Padding = New Padding(0, 5, 0, 0)
-        MostBoughtProductTotalUnits.Size = New Size(31, 20)
+        MostBoughtProductTotalUnits.Size = New Size(15, 20)
         MostBoughtProductTotalUnits.TabIndex = 1
-        MostBoughtProductTotalUnits.Text = "500"
+        MostBoughtProductTotalUnits.Text = "0"
         ' 
         ' MostBoughtProductTotalUnitsLabel
         ' 
@@ -391,9 +391,9 @@ Partial Class DashboardForm
         MostBoughtProductName.Location = New Point(12, 26)
         MostBoughtProductName.Name = "MostBoughtProductName"
         MostBoughtProductName.Padding = New Padding(0, 5, 0, 0)
-        MostBoughtProductName.Size = New Size(63, 20)
+        MostBoughtProductName.Size = New Size(15, 20)
         MostBoughtProductName.TabIndex = 1
-        MostBoughtProductName.Text = "Wai Wai"
+        MostBoughtProductName.Text = "-"
         ' 
         ' MostBoughtProductNameLabel
         ' 
@@ -482,9 +482,9 @@ Partial Class DashboardForm
         TotalOrdersDelivered.Location = New Point(12, 26)
         TotalOrdersDelivered.Name = "TotalOrdersDelivered"
         TotalOrdersDelivered.Padding = New Padding(0, 5, 0, 0)
-        TotalOrdersDelivered.Size = New Size(31, 20)
+        TotalOrdersDelivered.Size = New Size(15, 20)
         TotalOrdersDelivered.TabIndex = 1
-        TotalOrdersDelivered.Text = "500"
+        TotalOrdersDelivered.Text = "0"
         ' 
         ' TotalOrdersDeliveredLabel
         ' 
@@ -527,9 +527,9 @@ Partial Class DashboardForm
         TotalOrdersAmount.Location = New Point(12, 26)
         TotalOrdersAmount.Name = "TotalOrdersAmount"
         TotalOrdersAmount.Padding = New Padding(0, 5, 0, 0)
-        TotalOrdersAmount.Size = New Size(87, 20)
+        TotalOrdersAmount.Size = New Size(47, 20)
         TotalOrdersAmount.TabIndex = 1
-        TotalOrdersAmount.Text = "Rs. 200000"
+        TotalOrdersAmount.Text = "Rs. 0"
         ' 
         ' TotalOrdersAmountLabel
         ' 
@@ -572,9 +572,9 @@ Partial Class DashboardForm
         TotalOrders.Location = New Point(12, 26)
         TotalOrders.Name = "TotalOrders"
         TotalOrders.Padding = New Padding(0, 5, 0, 0)
-        TotalOrders.Size = New Size(31, 20)
+        TotalOrders.Size = New Size(15, 20)
         TotalOrders.TabIndex = 1
-        TotalOrders.Text = "200"
+        TotalOrders.Text = "0"
         ' 
         ' TotalOrdersLabel
         ' 

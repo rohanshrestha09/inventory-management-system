@@ -111,6 +111,33 @@ Public Class Order
 
         Database.Connection.Close()
     End Function
+
+    Public Shared Function GetOrderAnalytics(ByVal UserID As Integer) As DataRow
+        Database.Connection.Open()
+
+        Dim Query As String = "SELECT count(order_id) as 'total_orders', sum(total_amount) as 'total_orders_amount', sum(case when delivery_status = 'COMPLETED' then 1 else 0 end) as 'total_orders_delivered' FROM orders " &
+                "WHERE (orders.user_id = @UserID OR @UserID IS NULL)"
+
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@UserId", If(UserID = 0, DBNull.Value, UserID))
+
+        Dim Adapter As New MySqlDataAdapter(Command)
+
+        Dim DataSet As New DataSet()
+
+        Adapter.Fill(DataSet, "orders")
+
+        Dim Record As DataRow = Nothing
+
+        If DataSet.Tables("orders").Rows.Count > 0 Then
+            Record = DataSet.Tables("orders").Rows(0)
+        End If
+
+        Database.Connection.Close()
+
+        Return Record
+    End Function
 End Class
 
 Public Class GetAllOrdersArgs

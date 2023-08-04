@@ -71,7 +71,7 @@ Public Class User
         Return UserList.ToArray()
     End Function
 
-    Public Shared Function GetUser(ByVal UserID As String) As DataRow
+    Public Shared Function GetUser(ByVal UserID As Integer) As DataRow
         Database.Connection.Open()
 
         Dim Query As String = "SELECT * FROM users WHERE user_id = @UserID;"

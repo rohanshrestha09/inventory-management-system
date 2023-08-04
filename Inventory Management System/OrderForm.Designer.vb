@@ -86,7 +86,7 @@ Partial Class OrderForm
         ' 
         ' SearchInputPanel
         ' 
-        SearchInputPanel.BackColor = Color.FromArgb(246, 250, 255)
+        SearchInputPanel.BackColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         SearchInputPanel.Controls.Add(SearchInput)
         SearchInputPanel.Dock = DockStyle.Left
         SearchInputPanel.Location = New Point(0, 0)
@@ -96,7 +96,7 @@ Partial Class OrderForm
         ' 
         ' SearchInput
         ' 
-        SearchInput.BackColor = Color.FromArgb(246, 250, 255)
+        SearchInput.BackColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         SearchInput.BorderStyle = BorderStyle.None
         SearchInput.Cursor = Cursors.IBeam
         SearchInput.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
@@ -109,7 +109,7 @@ Partial Class OrderForm
         ' 
         ' CreateOrderButton
         ' 
-        CreateOrderButton.BackColor = Color.FromArgb(0, 120, 212)
+        CreateOrderButton.BackColor = Color.FromArgb(CByte(0), CByte(120), CByte(212))
         CreateOrderButton.Cursor = Cursors.Hand
         CreateOrderButton.Dock = DockStyle.Right
         CreateOrderButton.FlatStyle = FlatStyle.Flat
@@ -129,14 +129,14 @@ Partial Class OrderForm
         OrdersTable.AllowUserToResizeColumns = False
         OrdersTable.AllowUserToResizeRows = False
         OrdersTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        OrdersTable.BackgroundColor = Color.FromArgb(246, 250, 255)
+        OrdersTable.BackgroundColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         OrdersTable.CellBorderStyle = DataGridViewCellBorderStyle.Raised
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = Color.FromArgb(246, 250, 255)
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         DataGridViewCellStyle1.Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(246, 250, 255)
+        DataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
         OrdersTable.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         OrdersTable.ColumnHeadersHeight = 40
@@ -149,7 +149,7 @@ Partial Class OrderForm
         DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
         OrdersTable.DefaultCellStyle = DataGridViewCellStyle2
         OrdersTable.Dock = DockStyle.Bottom
-        OrdersTable.GridColor = Color.FromArgb(246, 250, 255)
+        OrdersTable.GridColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         OrdersTable.Location = New Point(12, 59)
         OrdersTable.Name = "OrdersTable"
         OrdersTable.RowHeadersVisible = False
@@ -163,7 +163,7 @@ Partial Class OrderForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 14F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.FromArgb(240, 244, 247)
+        BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
         ClientSize = New Size(917, 564)
         Controls.Add(OrderContainerPanel)
         Controls.Add(HeaderPanel)
