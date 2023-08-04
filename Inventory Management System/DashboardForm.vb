@@ -19,7 +19,7 @@
                 .UserID = If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id")))
             }
 
-            Dim DataTable = Order.GetAllOrders(GetAllOrdersArgs)
+            Dim DataTable = Order.GetMostRecentOrders(GetAllOrdersArgs)
 
             RecentOrdersTable.DataSource = DataTable
         Catch Ex As Exception

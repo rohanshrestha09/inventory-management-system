@@ -29,13 +29,16 @@ create table products(
 
 create table orders(
     order_id int not null primary key auto_increment,
+    total_units int not null,
     total_amount float not null,
     total_paid_amount float not null,
     delivery_status enum('COMPLETED','IN_PROCESS','CANCELLED') not null default 'IN_PROCESS',
     payment_method enum('CASH','ESEWA','KHALTI','BANK') not null default 'CASH',
     user_id int not null,
+    product_id int not null,
     constraint check_total_paid_amount check(total_paid_amount <= total_amount),
     foreign key(user_id) references users(user_id),
+    foreign key(product_id) references products(product_id),
     created_at timestamp default current_timestamp,
     updated_at datetime default current_timestamp on update current_timestamp
 );

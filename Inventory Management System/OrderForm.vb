@@ -11,6 +11,10 @@
             Dim DataTable = Order.GetAllOrders(GetAllOrdersArgs)
 
             OrdersTable.DataSource = DataTable
+
+            If (AuthUser.Item("role") <> "ADMIN") Then
+                CreateOrderButton.Enabled = False
+            End If
         Catch Ex As Exception
             MsgBox(Ex.Message)
         End Try
@@ -39,5 +43,15 @@
         Catch Ex As Exception
             MsgBox(Ex.Message)
         End Try
+    End Sub
+
+    Private Sub CreateOrderButton_Click(sender As Object, e As EventArgs) Handles CreateOrderButton.Click
+        Dashboard.DashboardContainer.Controls.Clear()
+
+        CreateOrderForm.TopLevel = False
+
+        Dashboard.DashboardContainer.Controls.Add(CreateOrderForm)
+
+        CreateOrderForm.Show()
     End Sub
 End Class

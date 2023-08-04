@@ -24,7 +24,6 @@ Partial Class DashboardForm
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         HeaderPanel = New Panel()
         Header = New Label()
         DashboardContainerPanel = New Panel()
@@ -191,7 +190,7 @@ Partial Class DashboardForm
         RecentOrdersTable.CellBorderStyle = DataGridViewCellBorderStyle.Raised
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
-        DataGridViewCellStyle1.Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle1.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
@@ -200,7 +199,7 @@ Partial Class DashboardForm
         RecentOrdersTable.ColumnHeadersHeight = 35
         DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = SystemColors.Window
-        DataGridViewCellStyle2.Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
+        DataGridViewCellStyle2.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = SystemColors.ControlText
         DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
@@ -210,14 +209,6 @@ Partial Class DashboardForm
         RecentOrdersTable.GridColor = Color.FromArgb(CByte(246), CByte(250), CByte(255))
         RecentOrdersTable.Location = New Point(9, 41)
         RecentOrdersTable.Name = "RecentOrdersTable"
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = SystemColors.Control
-        DataGridViewCellStyle3.Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.True
-        RecentOrdersTable.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         RecentOrdersTable.RowHeadersVisible = False
         RecentOrdersTable.RowTemplate.Height = 35
         RecentOrdersTable.RowTemplate.Resizable = DataGridViewTriState.False

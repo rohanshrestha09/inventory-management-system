@@ -1,10 +1,22 @@
 ﻿Imports MySql.Data.MySqlClient
 
+Public Class ProductJSON
+    Public ProductID As Integer
+    Public ProductName As String
+    Public SkuName As String
+    Public Price As Double
+    Public Quantity As Integer
+    Public Brand As String
+    Public Category As String
+End Class
+
 Public Class Product
     Public Shared Function GetAllProducts(ByVal Search As String) As DataTable
         Database.Connection.Open()
 
-        Dim Query As String = $"SELECT product_id as 'Product ID', name as 'Name', sku_name as 'SKU Name', price as 'Price', quantity as 'Quantity', brand as 'Brand', category as 'Category' FROM products WHERE name LIKE @Search ORDER BY created_at DESC"
+        Dim Query As String = "SELECT product_id as 'Product ID', name as 'Name', sku_name as 'SKU Name', price as 'Price', quantity as 'Quantity', brand as 'Brand', category as 'Category' " &
+                            "FROM products WHERE name LIKE @Search " &
+                            "ORDER BY created_at DESC"
 
         Dim Command As New MySqlCommand(Query, Database.Connection)
 
@@ -19,6 +31,36 @@ Public Class Product
         Database.Connection.Close()
 
         Return DataTable
+    End Function
+
+    Public Shared Function GetAllProductsJSON() As ProductJSON()
+        Dim ProductList As New List(Of ProductJSON)()
+
+        Database.Connection.Open()
+
+        Dim Query = "select product_id, name, sku_name, price, quantity, brand, category from products"
+
+        Using Command As New MySqlCommand(Query, Database.Connection)
+            Using Reader As MySqlDataReader = Command.ExecuteReader()
+                While Reader.Read()
+                    Dim Product As New ProductJSON With {
+                        .ProductID = Convert.ToInt32(Reader("product_id")),
+                        .ProductName = Reader("name").ToString(),
+                        .SkuName = Reader("sku_name").ToString(),
+                        .Price = Convert.ToDouble(Reader("price")),
+                        .Quantity = Convert.ToInt32(Reader("quantity")),
+                        .Brand = Reader("brand").ToString(),
+                        .Category = Reader("category").ToString()
+                    }
+
+                    ProductList.Add(Product)
+                End While
+            End Using
+        End Using
+
+        Database.Connection.Close()
+
+        Return ProductList.ToArray()
     End Function
 
     Public Shared Function CreateProduct(ByVal CreateProductArgs As CreateProductArgs)

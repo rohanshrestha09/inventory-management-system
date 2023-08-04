@@ -1,9 +1,15 @@
 ﻿Public Class ProductForm
     Private Sub ProductForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
+            Dim AuthUser = User.GetUser(LoginForm.UserID)
+
             Dim DataTable = Product.GetAllProducts(SearchInput.Text)
 
             ProductsTable.DataSource = DataTable
+
+            If (AuthUser.Item("role") <> "ADMIN") Then
+                CreateProductButton.Enabled = False
+            End If
         Catch Ex As Exception
             MsgBox(Ex.Message)
         End Try
