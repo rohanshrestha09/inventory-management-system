@@ -71,7 +71,7 @@ Public Class Product
 
         Dim Command As New MySqlCommand(Query, Database.Connection)
 
-        Command.Parameters.AddWithValue("@productName", CreateProductArgs.ProductName)
+        Command.Parameters.AddWithValue("@ProductName", CreateProductArgs.ProductName)
 
         Command.Parameters.AddWithValue("@ProductSkuName", CreateProductArgs.ProductSkuName)
 
@@ -84,6 +84,54 @@ Public Class Product
         Command.Parameters.AddWithValue("@Brand", CreateProductArgs.Brand)
 
         Command.Parameters.AddWithValue("@Category", CreateProductArgs.Category)
+
+        If Command.ExecuteNonQuery() < 0 Then
+            Database.Connection.Close()
+            Throw New Exception("Something went wrong")
+        End If
+
+        Database.Connection.Close()
+    End Function
+
+    Public Shared Function UpdateProduct(ByVal CreateProductArgs As CreateProductArgs)
+        Database.Connection.Open()
+
+        Dim Query As String = "UPDATE products SET name = @ProductName, price = @Price, quantity= @Quantity, description = @Description, brand = @Brand, category = @Category where product_id = @ProductID;"
+
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@ProductID", CreateProductArgs.ProductID)
+
+        Command.Parameters.AddWithValue("@ProductName", CreateProductArgs.ProductName)
+
+        Command.Parameters.AddWithValue("@ProductSkuName", CreateProductArgs.ProductSkuName)
+
+        Command.Parameters.AddWithValue("@Price", CreateProductArgs.Price)
+
+        Command.Parameters.AddWithValue("@Quantity", CreateProductArgs.Quantity)
+
+        Command.Parameters.AddWithValue("@Description", CreateProductArgs.Description)
+
+        Command.Parameters.AddWithValue("@Brand", CreateProductArgs.Brand)
+
+        Command.Parameters.AddWithValue("@Category", CreateProductArgs.Category)
+
+        If Command.ExecuteNonQuery() < 0 Then
+            Database.Connection.Close()
+            Throw New Exception("Something went wrong")
+        End If
+
+        Database.Connection.Close()
+    End Function
+
+    Public Shared Function DeleteProduct(ByVal ProductID As Integer)
+        Database.Connection.Open()
+
+        Dim Query As String = "DELETE FROM products where product_id = @ProductID;"
+
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@ProductID", ProductID)
 
         If Command.ExecuteNonQuery() < 0 Then
             Database.Connection.Close()
@@ -122,9 +170,39 @@ Public Class Product
 
         Return Record
     End Function
+
+    Public Shared Function GetProduct(ByVal ProductID As Integer) As DataRow
+        Database.Connection.Open()
+
+        Dim Query As String = "SELECT * FROM products WHERE product_id = @ProductID;"
+
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@ProductID", ProductID)
+
+        Dim Adapter As New MySqlDataAdapter(Command)
+
+        Dim DataSet As New DataSet()
+
+        Adapter.Fill(DataSet, "products")
+
+        Dim Record As DataRow
+
+        If DataSet.Tables("products").Rows.Count > 0 Then
+            Record = DataSet.Tables("products").Rows(0)
+        Else
+            Database.Connection.Close()
+            Throw New Exception("Record not found")
+        End If
+
+        Database.Connection.Close()
+
+        Return Record
+    End Function
 End Class
 
 Public Class CreateProductArgs
+    Public ProductID As String
     Public ProductName As String
     Public ProductSkuName As String
     Public Price As Decimal

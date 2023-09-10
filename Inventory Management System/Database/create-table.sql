@@ -37,8 +37,8 @@ create table orders(
     user_id int not null,
     product_id int not null,
     constraint check_total_paid_amount check(total_paid_amount <= total_amount),
-    foreign key(user_id) references users(user_id),
-    foreign key(product_id) references products(product_id),
+    foreign key(user_id) references users(user_id) ON DELETE CASCADE,
+    foreign key(product_id) references products(product_id) ON DELETE CASCADE,
     created_at timestamp default current_timestamp,
     updated_at datetime default current_timestamp on update current_timestamp
 );
@@ -49,8 +49,8 @@ create table orders_products(
     product_id int not null,
     total_units int not null,
     total_amount int not null,
-    foreign key(order_id) references orders(order_id),
-    foreign key(product_id) references products(product_id),
+    foreign key(order_id) references orders(order_id) ON DELETE CASCADE,
+    foreign key(product_id) references products(product_id) ON DELETE CASCADE,
     constraint unique_order_product unique (order_id, product_id)
     created_at timestamp default current_timestamp,
     updated_at datetime default current_timestamp on update current_timestamp

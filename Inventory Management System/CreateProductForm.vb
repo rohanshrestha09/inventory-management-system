@@ -21,13 +21,9 @@
 
             Dashboard.DashboardContainer.Controls.Add(ProductForm)
 
-            Try
-                Dim DataTable = Product.GetAllProducts(ProductForm.SearchInput.Text)
+            Dim DataTable = Product.GetAllProducts(ProductForm.SearchInput.Text)
 
-                ProductForm.ProductsTable.DataSource = DataTable
-            Catch Ex As Exception
-                MsgBox(Ex.Message)
-            End Try
+            ProductForm.ProductsTable.DataSource = DataTable
 
             ProductForm.Show()
         Catch Ex As Exception

@@ -15,6 +15,22 @@
         End Try
     End Sub
 
+    Private Sub ProductsTable_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles ProductsTable.CellClick
+        If e.RowIndex >= 0 AndAlso e.ColumnIndex >= 0 Then
+            Dim ProductID As String = ProductsTable.Rows(e.RowIndex).Cells("Product ID").Value.ToString()
+
+            Dashboard.DashboardContainer.Controls.Clear()
+
+            UpdateProductForm.TopLevel = False
+
+            Dashboard.DashboardContainer.Controls.Add(UpdateProductForm)
+
+            UpdateProductForm.ProductID = ProductID
+
+            UpdateProductForm.Show()
+        End If
+    End Sub
+
     Private Sub SearchInput_GotFocus(sender As Object, e As EventArgs) Handles SearchInput.GotFocus
         SearchInputPanel.BorderStyle = BorderStyle.FixedSingle
     End Sub
