@@ -120,7 +120,7 @@ Partial Class UpdateProductForm
         ' 
         ' DeleteProductButton
         ' 
-        DeleteProductButton.BackColor = Color.FromArgb(CByte(225), CByte(77), CByte(79))
+        DeleteProductButton.BackColor = Color.FromArgb(225, 77, 79)
         DeleteProductButton.Cursor = Cursors.Hand
         DeleteProductButton.Dock = DockStyle.Left
         DeleteProductButton.FlatStyle = FlatStyle.Flat
@@ -135,10 +135,10 @@ Partial Class UpdateProductForm
         ' 
         ' CancelButton
         ' 
-        CancelButton.BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
+        CancelButton.BackColor = Color.FromArgb(240, 244, 247)
         CancelButton.Cursor = Cursors.Hand
         CancelButton.Dock = DockStyle.Right
-        CancelButton.FlatAppearance.BorderColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
+        CancelButton.FlatAppearance.BorderColor = Color.FromArgb(240, 244, 247)
         CancelButton.FlatAppearance.BorderSize = 0
         CancelButton.FlatStyle = FlatStyle.System
         CancelButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
@@ -152,7 +152,7 @@ Partial Class UpdateProductForm
         ' 
         ' UpdateProductButton
         ' 
-        UpdateProductButton.BackColor = Color.FromArgb(CByte(0), CByte(120), CByte(212))
+        UpdateProductButton.BackColor = Color.FromArgb(0, 120, 212)
         UpdateProductButton.Cursor = Cursors.Hand
         UpdateProductButton.Dock = DockStyle.Left
         UpdateProductButton.FlatStyle = FlatStyle.Flat
@@ -438,7 +438,7 @@ Partial Class UpdateProductForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 14F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
+        BackColor = Color.FromArgb(240, 244, 247)
         ClientSize = New Size(917, 564)
         Controls.Add(CreateProductContainer)
         Controls.Add(HeaderPanel)

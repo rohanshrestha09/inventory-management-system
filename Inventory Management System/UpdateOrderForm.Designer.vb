@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class CreateOrderForm
+Partial Class UpdateOrderForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -68,8 +68,9 @@ Partial Class CreateOrderForm
         Customers = New ComboBox()
         CustomerLabel = New Label()
         Panel11 = New Panel()
+        DeleteOrderButton = New Button()
         CancelButton = New Button()
-        CreateOrderButton = New Button()
+        UpdateOrderButton = New Button()
         HeaderPanel.SuspendLayout()
         CreateOrderContainer.SuspendLayout()
         Panel7.SuspendLayout()
@@ -102,7 +103,7 @@ Partial Class CreateOrderForm
         HeaderPanel.Name = "HeaderPanel"
         HeaderPanel.Padding = New Padding(9)
         HeaderPanel.Size = New Size(917, 47)
-        HeaderPanel.TabIndex = 5
+        HeaderPanel.TabIndex = 6
         ' 
         ' Header
         ' 
@@ -111,9 +112,9 @@ Partial Class CreateOrderForm
         Header.Font = New Font("CaskaydiaCove NF", 20.25F, FontStyle.Bold, GraphicsUnit.Point)
         Header.Location = New Point(9, 9)
         Header.Name = "Header"
-        Header.Size = New Size(158, 31)
+        Header.Size = New Size(206, 31)
         Header.TabIndex = 0
-        Header.Text = "Add Order"
+        Header.Text = "Update Order"
         ' 
         ' CreateOrderContainer
         ' 
@@ -131,7 +132,7 @@ Partial Class CreateOrderForm
         CreateOrderContainer.Name = "CreateOrderContainer"
         CreateOrderContainer.Padding = New Padding(10)
         CreateOrderContainer.Size = New Size(917, 496)
-        CreateOrderContainer.TabIndex = 7
+        CreateOrderContainer.TabIndex = 8
         ' 
         ' Panel7
         ' 
@@ -189,7 +190,6 @@ Partial Class CreateOrderForm
         ' DeliveryStatus
         ' 
         DeliveryStatus.Dock = DockStyle.Bottom
-        DeliveryStatus.Enabled = False
         DeliveryStatus.Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
         DeliveryStatus.FormattingEnabled = True
         DeliveryStatus.Location = New Point(10, 31)
@@ -504,6 +504,7 @@ Partial Class CreateOrderForm
         ' Products
         ' 
         Products.Dock = DockStyle.Bottom
+        Products.Enabled = False
         Products.Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Products.FormattingEnabled = True
         Products.Location = New Point(10, 31)
@@ -558,6 +559,7 @@ Partial Class CreateOrderForm
         ' 
         ShopName.Cursor = Cursors.IBeam
         ShopName.Dock = DockStyle.Bottom
+        ShopName.Enabled = False
         ShopName.Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
         ShopName.Location = New Point(10, 32)
         ShopName.Name = "ShopName"
@@ -579,6 +581,7 @@ Partial Class CreateOrderForm
         ' Customers
         ' 
         Customers.Dock = DockStyle.Bottom
+        Customers.Enabled = False
         Customers.Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
         Customers.FormattingEnabled = True
         Customers.Location = New Point(10, 31)
@@ -599,8 +602,9 @@ Partial Class CreateOrderForm
         ' 
         ' Panel11
         ' 
+        Panel11.Controls.Add(DeleteOrderButton)
         Panel11.Controls.Add(CancelButton)
-        Panel11.Controls.Add(CreateOrderButton)
+        Panel11.Controls.Add(UpdateOrderButton)
         Panel11.Dock = DockStyle.Bottom
         Panel11.Location = New Point(10, 430)
         Panel11.Name = "Panel11"
@@ -608,38 +612,54 @@ Partial Class CreateOrderForm
         Panel11.Size = New Size(897, 56)
         Panel11.TabIndex = 5
         ' 
+        ' DeleteOrderButton
+        ' 
+        DeleteOrderButton.BackColor = Color.FromArgb(CByte(225), CByte(77), CByte(79))
+        DeleteOrderButton.Cursor = Cursors.Hand
+        DeleteOrderButton.Dock = DockStyle.Left
+        DeleteOrderButton.FlatStyle = FlatStyle.Flat
+        DeleteOrderButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        DeleteOrderButton.ForeColor = Color.White
+        DeleteOrderButton.Location = New Point(220, 10)
+        DeleteOrderButton.Name = "DeleteOrderButton"
+        DeleteOrderButton.Size = New Size(210, 36)
+        DeleteOrderButton.TabIndex = 10
+        DeleteOrderButton.Text = "Delete"
+        DeleteOrderButton.UseVisualStyleBackColor = False
+        ' 
         ' CancelButton
         ' 
         CancelButton.BackColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
         CancelButton.Cursor = Cursors.Hand
+        CancelButton.Dock = DockStyle.Right
         CancelButton.FlatAppearance.BorderColor = Color.FromArgb(CByte(240), CByte(244), CByte(247))
         CancelButton.FlatAppearance.BorderSize = 0
         CancelButton.FlatStyle = FlatStyle.System
         CancelButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
         CancelButton.ForeColor = Color.Black
-        CancelButton.Location = New Point(226, 10)
+        CancelButton.Location = New Point(677, 10)
         CancelButton.Name = "CancelButton"
         CancelButton.Size = New Size(210, 36)
         CancelButton.TabIndex = 8
         CancelButton.Text = "Cancel"
         CancelButton.UseVisualStyleBackColor = False
         ' 
-        ' CreateOrderButton
+        ' UpdateOrderButton
         ' 
-        CreateOrderButton.BackColor = Color.FromArgb(CByte(0), CByte(120), CByte(212))
-        CreateOrderButton.Cursor = Cursors.Hand
-        CreateOrderButton.Dock = DockStyle.Left
-        CreateOrderButton.FlatStyle = FlatStyle.Flat
-        CreateOrderButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
-        CreateOrderButton.ForeColor = Color.White
-        CreateOrderButton.Location = New Point(10, 10)
-        CreateOrderButton.Name = "CreateOrderButton"
-        CreateOrderButton.Size = New Size(210, 36)
-        CreateOrderButton.TabIndex = 7
-        CreateOrderButton.Text = "+ Create Order"
-        CreateOrderButton.UseVisualStyleBackColor = False
+        UpdateOrderButton.BackColor = Color.FromArgb(CByte(0), CByte(120), CByte(212))
+        UpdateOrderButton.Cursor = Cursors.Hand
+        UpdateOrderButton.Dock = DockStyle.Left
+        UpdateOrderButton.FlatStyle = FlatStyle.Flat
+        UpdateOrderButton.Font = New Font("CaskaydiaCove NF", 9.75F, FontStyle.Regular, GraphicsUnit.Point)
+        UpdateOrderButton.ForeColor = Color.White
+        UpdateOrderButton.Location = New Point(10, 10)
+        UpdateOrderButton.Name = "UpdateOrderButton"
+        UpdateOrderButton.Size = New Size(210, 36)
+        UpdateOrderButton.TabIndex = 7
+        UpdateOrderButton.Text = "Update Order"
+        UpdateOrderButton.UseVisualStyleBackColor = False
         ' 
-        ' CreateOrderForm
+        ' UpdateOrderForm
         ' 
         AutoScaleDimensions = New SizeF(7F, 14F)
         AutoScaleMode = AutoScaleMode.Font
@@ -649,8 +669,8 @@ Partial Class CreateOrderForm
         Controls.Add(HeaderPanel)
         Font = New Font("CaskaydiaCove NF", 9F, FontStyle.Regular, GraphicsUnit.Point)
         FormBorderStyle = FormBorderStyle.None
-        Name = "CreateOrderForm"
-        Text = "CreateOrderForm"
+        Name = "UpdateOrderForm"
+        Text = "UpdateOrderForm"
         HeaderPanel.ResumeLayout(False)
         HeaderPanel.PerformLayout()
         CreateOrderContainer.ResumeLayout(False)
@@ -691,9 +711,6 @@ Partial Class CreateOrderForm
     Friend WithEvents HeaderPanel As Panel
     Friend WithEvents Header As Label
     Friend WithEvents CreateOrderContainer As Panel
-    Friend WithEvents Panel11 As Panel
-    Friend WithEvents CancelButton As Button
-    Friend WithEvents CreateOrderButton As Button
     Friend WithEvents Panel7 As Panel
     Friend WithEvents Panel8 As Panel
     Friend WithEvents PaymentMethod As ComboBox
@@ -736,4 +753,8 @@ Partial Class CreateOrderForm
     Friend WithEvents Panel19 As Panel
     Friend WithEvents Customers As ComboBox
     Friend WithEvents CustomerLabel As Label
+    Friend WithEvents Panel11 As Panel
+    Friend WithEvents CancelButton As Button
+    Friend WithEvents UpdateOrderButton As Button
+    Friend WithEvents DeleteOrderButton As Button
 End Class

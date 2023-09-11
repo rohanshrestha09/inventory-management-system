@@ -1,4 +1,6 @@
-﻿Public Class ProductForm
+﻿Imports System.IO.Pipelines
+
+Public Class ProductForm
     Private Sub ProductForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             Dim AuthUser = User.GetUser(LoginForm.UserID)
@@ -28,6 +30,32 @@
             UpdateProductForm.ProductID = ProductID
 
             UpdateProductForm.Show()
+
+            Try
+                Dim AuthUser = User.GetUser(LoginForm.UserID)
+
+                Dim SelectedProduct = Product.GetProduct(ProductID)
+
+                UpdateProductForm.ProductName.Text = SelectedProduct.Item("name")
+
+                UpdateProductForm.ProductSkuName.Text = SelectedProduct.Item("sku_name")
+
+                UpdateProductForm.Price.Text = SelectedProduct.Item("price")
+
+                UpdateProductForm.Quantity.Text = SelectedProduct.Item("quantity")
+
+                UpdateProductForm.Description.Text = SelectedProduct.Item("description")
+
+                UpdateProductForm.Brand.Text = SelectedProduct.Item("brand")
+
+                UpdateProductForm.Category.Text = SelectedProduct.Item("category")
+
+                If (AuthUser.Item("role") <> "ADMIN") Then
+                    UpdateProductForm.UpdateProductButton.Enabled = False
+                End If
+            Catch Ex As Exception
+                MsgBox(Ex.Message)
+            End Try
         End If
     End Sub
 

@@ -1,9 +1,12 @@
-﻿Public Class CreateOrderForm
+﻿Public Class UpdateOrderForm
+    Public Shared OrderID As String
+
     Private ProductList As ProductJSON()
 
     Private UserList As UserJSON()
 
-    Private Sub CreateOrderForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub UpdateOrderForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         DeliveryStatus.Items.AddRange(DeliveryStatusEnum.GetCollection())
 
         DeliveryStatus.SelectedItem = DeliveryStatusEnum.IN_PROCESS
@@ -47,6 +50,40 @@
         Catch Ex As Exception
             MsgBox(Ex.Message)
         End Try
+
+        Try
+            Dim AuthUser = User.GetUser(LoginForm.UserID)
+
+            Dim SelectedOrder = Order.GetOrder(OrderID)
+
+            TotalAmount.Text = SelectedOrder.Item("total_amount")
+
+            TotalUnits.Text = SelectedOrder.Item("total_units")
+
+            TotalPaidAmount.Text = SelectedOrder.Item("total_paid_amount")
+
+            DeliveryStatus.Text = SelectedOrder.Item("delivery_status")
+
+            PaymentMethod.Text = SelectedOrder.Item("payment_method")
+
+            Price.Text = SelectedOrder.Item("price")
+
+            Brand.Text = SelectedOrder.Item("brand")
+
+            Quantity.Text = SelectedOrder.Item("quantity")
+
+            Products.SelectedValue = Integer.Parse(SelectedOrder.Item("product_id"))
+
+            ShopName.Text = SelectedOrder.Item("shop_name")
+
+            Customers.SelectedValue = Integer.Parse(SelectedOrder.Item("user_id"))
+
+            If (AuthUser.Item("role") <> "ADMIN") Then
+                UpdateOrderButton.Enabled = False
+            End If
+        Catch Ex As Exception
+            MsgBox(Ex.Message)
+        End Try
     End Sub
 
     Private Sub Products_SelectedValueChanged(sender As Object, e As EventArgs) Handles Products.SelectedValueChanged, TotalUnits.TextChanged
@@ -77,15 +114,57 @@
         End If
     End Sub
 
-    Private Sub CreateOrderButton_Click(sender As Object, e As EventArgs) Handles CreateOrderButton.Click
-        If (Products.SelectedValue Is Nothing OrElse TypeOf Products.SelectedValue IsNot Integer) Then Return
+    Private Sub CancelButton_Click(sender As Object, e As EventArgs) Handles CancelButton.Click
+        Dashboard.DashboardContainer.Controls.Clear()
 
-        If (Customers.SelectedValue Is Nothing OrElse TypeOf Customers.SelectedValue IsNot Integer) Then Return
+        OrderForm.TopLevel = False
 
+        Dashboard.DashboardContainer.Controls.Add(OrderForm)
+
+        OrderForm.Show()
+    End Sub
+
+    Private Sub DeleteOrderButton_Click(sender As Object, e As EventArgs) Handles DeleteOrderButton.Click
+        Dim Action = MessageBox.Show("Are you sure you want to proceed?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+
+        If Action = DialogResult.Yes Then
+            Try
+                Order.DeleteOrder(OrderID)
+
+                MsgBox("Order Deleted")
+
+                Dashboard.DashboardContainer.Controls.Clear()
+
+                OrderForm.TopLevel = False
+
+                Dashboard.DashboardContainer.Controls.Add(OrderForm)
+
+                Dim AuthUser = User.GetUser(LoginForm.UserID)
+
+                Dim GetAllOrdersArgs = New GetAllOrdersArgs With {
+                .Search = OrderForm.SearchInput.Text,
+                  .UserID = If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id")))
+                }
+
+                Dim DataTable = Order.GetAllOrders(GetAllOrdersArgs)
+
+                OrderForm.OrdersTable.DataSource = DataTable
+
+                If (AuthUser.Item("role") <> "ADMIN") Then
+                    OrderForm.CreateOrderButton.Enabled = False
+                End If
+
+                OrderForm.Show()
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End If
+    End Sub
+
+    Private Sub UpdateOrderButton_Click(sender As Object, e As EventArgs) Handles UpdateOrderButton.Click
         Try
             Dim CreateOrderArgs = New CreateOrderArgs With {
-                .UserID = Integer.Parse(Customers.SelectedValue),
-                .ProductID = Integer.Parse(Products.SelectedValue),
+                .OrderID = OrderID,
                 .DeliveryStatus = DeliveryStatus.Text,
                 .PaymentMethod = PaymentMethod.Text,
                 .TotalAmount = Double.Parse(TotalAmount.Text),
@@ -93,9 +172,9 @@
                 .TotalUnits = Double.Parse(TotalUnits.Text)
             }
 
-            Order.CreateOrder(CreateOrderArgs)
+            Order.UpdateOrder(CreateOrderArgs)
 
-            MsgBox("Order Created")
+            MsgBox("Order Updated")
 
             Dashboard.DashboardContainer.Controls.Clear()
 
@@ -106,7 +185,7 @@
             Dim AuthUser = User.GetUser(LoginForm.UserID)
 
             Dim GetAllOrdersArgs = New GetAllOrdersArgs With {
-                .Search = OrderForm.SearchInput.Text,
+                .Search = "",
                   .UserID = If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id")))
             }
 
@@ -146,27 +225,6 @@
         Finally
             Database.Connection.Close()
         End Try
-    End Sub
 
-    Private Sub CancelButton_Click(sender As Object, e As EventArgs) Handles CancelButton.Click
-        Dashboard.DashboardContainer.Controls.Clear()
-
-        OrderForm.TopLevel = False
-
-        Dashboard.DashboardContainer.Controls.Add(OrderForm)
-
-        OrderForm.Show()
-    End Sub
-
-    Private Sub Customers_SelectedValueChanged(sender As Object, e As EventArgs) Handles Customers.SelectedValueChanged
-        If (Customers.SelectedValue Is Nothing OrElse TypeOf Customers.SelectedValue IsNot Integer) Then Return
-
-        Dim SelectedCustomerID As Integer = Customers.SelectedValue
-
-        Dim SelectedUser As UserJSON = UserList.FirstOrDefault(Function(U) U.UserID = SelectedCustomerID)
-
-        If SelectedUser IsNot Nothing Then
-            ShopName.Text = SelectedUser.ShopName
-        End If
     End Sub
 End Class

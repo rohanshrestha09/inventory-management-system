@@ -86,7 +86,7 @@ Public Class Order
         Database.Connection.Open()
 
         Dim Query As String = "insert into orders (user_id, product_id, total_amount, total_paid_amount, total_units, delivery_status, payment_method) " &
-            "values (@UserID, @ProductID, @TotalAmount, @TotalPaidAmount, @TotalUnits, @DeliveryStatus, @PaymentMethod)"
+        "values (@UserID, @ProductID, @TotalAmount, @TotalPaidAmount, @TotalUnits, @DeliveryStatus, @PaymentMethod)"
 
         Dim Command As New MySqlCommand(Query, Database.Connection)
 
@@ -138,6 +138,79 @@ Public Class Order
 
         Return Record
     End Function
+
+    Public Shared Function GetOrder(ByVal OrderID As Integer) As DataRow
+        Database.Connection.Open()
+
+        Dim Query As String = "SELECT * FROM orders INNER JOIN users ON users.user_id = orders.user_id INNER JOIN products on products.product_id = orders.product_id WHERE order_id = @OrderID;"
+
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@OrderID", OrderID)
+
+        Dim Adapter As New MySqlDataAdapter(Command)
+
+        Dim DataSet As New DataSet()
+
+        Adapter.Fill(DataSet, "orders")
+
+        Dim Record As DataRow
+
+        If DataSet.Tables("orders").Rows.Count > 0 Then
+            Record = DataSet.Tables("orders").Rows(0)
+        Else
+            Database.Connection.Close()
+            Throw New Exception("Record not found")
+        End If
+
+        Database.Connection.Close()
+
+        Return Record
+    End Function
+
+    Public Shared Function UpdateOrder(ByVal CreateOrderArgs As CreateOrderArgs)
+        Database.Connection.Open()
+
+        Dim Query As String = "UPDATE orders SET total_amount = @TotalAmount, total_paid_amount = @TotalPaidAmount, total_units = @TotalUnits, delivery_status = @DeliveryStatus, payment_method = @PaymentMethod where order_id = @OrderID;"
+
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@OrderID", CreateOrderArgs.OrderID)
+
+        Command.Parameters.AddWithValue("@TotalAmount", CreateOrderArgs.TotalAmount)
+
+        Command.Parameters.AddWithValue("@TotalPaidAmount", CreateOrderArgs.TotalPaidAmount)
+
+        Command.Parameters.AddWithValue("@TotalUnits", CreateOrderArgs.TotalUnits)
+
+        Command.Parameters.AddWithValue("@DeliveryStatus", CreateOrderArgs.DeliveryStatus)
+
+        Command.Parameters.AddWithValue("@PaymentMethod", CreateOrderArgs.PaymentMethod)
+
+        If Command.ExecuteNonQuery() < 0 Then
+            Database.Connection.Close()
+            Throw New Exception("Something went wrong")
+        End If
+
+        Database.Connection.Close()
+    End Function
+
+    Public Shared Function DeleteOrder(ByVal OrderID As Integer)
+        Database.Connection.Open()
+
+        Dim Query As String = "DELETE FROM orders where order_id = @OrderID;"
+
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@OrderID", OrderID)
+
+        If Command.ExecuteNonQuery() < 0 Then
+            Database.Connection.Close()
+            Throw New Exception("Something went wrong")
+        End If
+
+        Database.Connection.Close()
+    End Function
 End Class
 
 Public Class GetAllOrdersArgs
@@ -148,6 +221,7 @@ Public Class GetAllOrdersArgs
 End Class
 
 Public Class CreateOrderArgs
+    Public OrderID As Integer
     Public UserID As Integer
     Public ProductID As Integer
     Public TotalUnits As Integer

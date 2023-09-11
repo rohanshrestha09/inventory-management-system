@@ -39,3 +39,4 @@ C:\Users\rohan\Documents\Inventory Management System\Inventory Management System
 C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory_Management_System.CreateProductForm.resources
 C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory_Management_System.CreateOrderForm.resources
 C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory_Management_System.UpdateProductForm.resources
+C:\Users\rohan\Documents\Inventory Management System\Inventory Management System\obj\Debug\net6.0-windows\Inventory_Management_System.UpdateOrderForm.resources

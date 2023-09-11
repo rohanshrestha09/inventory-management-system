@@ -57,6 +57,23 @@
             ProductForm.ProductsTable.DataSource = DataTable
 
             ProductForm.Show()
+
+
+            Dim AuthUser = User.GetUser(LoginForm.UserID)
+
+            Dim GetAllOrdersArgs = New GetAllOrdersArgs With {
+                .Search = "",
+                  .UserID = If(AuthUser.Item("role") = "ADMIN", 0, Integer.Parse(AuthUser.Item("user_id")))
+            }
+
+            DataTable = Order.GetAllOrders(GetAllOrdersArgs)
+
+            OrderForm.OrdersTable.DataSource = DataTable
+
+            If (AuthUser.Item("role") <> "ADMIN") Then
+                OrderForm.CreateOrderButton.Enabled = False
+            End If
+
         Catch Ex As Exception
             MsgBox(Ex.Message)
         End Try
