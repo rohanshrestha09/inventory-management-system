@@ -99,4 +99,37 @@ Public Class User
 
         Return Record
     End Function
+
+    Public Shared Function UpdateUser(ByVal UpdateUserArgs As UpdateUserArgs)
+        Database.Connection.Open()
+
+        Dim Query As String = "UPDATE users SET name = @UserName, address = @Address, shop_name = @ShopName, password = @Password WHERE user_id = @UserID;"
+
+        Dim Command As New MySqlCommand(Query, Database.Connection)
+
+        Command.Parameters.AddWithValue("@UserID", UpdateUserArgs.UserID)
+
+        Command.Parameters.AddWithValue("@UserName", UpdateUserArgs.UserName)
+
+        Command.Parameters.AddWithValue("@Address", UpdateUserArgs.Address)
+
+        Command.Parameters.AddWithValue("@ShopName", UpdateUserArgs.ShopName)
+
+        Command.Parameters.AddWithValue("@Password", UpdateUserArgs.Password)
+
+        If Command.ExecuteNonQuery() < 0 Then
+            Database.Connection.Close()
+            Throw New Exception("Something went wrong")
+        End If
+
+        Database.Connection.Close()
+    End Function
+End Class
+
+Public Class UpdateUserArgs
+    Public UserID As Integer
+    Public UserName As String
+    Public Address As String
+    Public ShopName As String
+    Public Password As String
 End Class

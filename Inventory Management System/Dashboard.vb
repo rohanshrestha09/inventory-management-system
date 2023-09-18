@@ -29,4 +29,8 @@ Public Class Dashboard
     Private Sub ProductButton_Click(sender As Object, e As EventArgs) Handles ProductButton.Click
         SwitchPanel(ProductForm, ProductPanel)
     End Sub
+
+    Private Sub AccountButton_Click(sender As Object, e As EventArgs) Handles AccountButton.Click
+        SwitchPanel(Account, AccountPanel)
+    End Sub
 End Class
